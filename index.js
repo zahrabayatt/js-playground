@@ -1,15 +1,10 @@
-let role = "guest";
+let array = [1, 2, 3, 4];
 
-switch (role) {
-  case "guest":
-    console.log("Guest User");
-    break;
+for (let i = 0; i < array.length; i++) {
+  const element = array[i];
+  console.log(element);
+}
 
-  case "moderator":
-    console.log("Moderator User");
-    break;
-
-  default:
-    console.log("Unknown Role");
-    break;
+for (let i = 0; i < 5; i++) {
+  if (i % 2 !== 0) console.log(i);
 }
