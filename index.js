@@ -1,16 +1,26 @@
-while (true) {
-  console.log("Hi");
+// we use for-in loop to iterate in properties of object or elements of array;
+
+const person = {
+  name: "Zahra",
+  age: 30,
+};
+
+for (const k in person) {
+  console.log(k, person[k]);
 }
 
-let i = 0;
-while (i < 5) {
-  console.log("hi");
+for (const key in person) {
+  if (person.hasOwnProperty.call(person, key)) {
+    const element = person[key];
+    console.log(element);
+  }
 }
 
-do {} while (true);
+// While it is possible to iterate over an array using a 'for...in' loop,
+// using the 'for...of' loop is considered a more convenient and idiomatic approach.
 
-for (let i = 0; i < 10; i++) {
-  console.log(i);
+const colors = ["red", "blue", "green"];
+
+for (let index in colors) {
+  console.log(index, colors[index]);
 }
-
-//Avoid infinite loops because it can crashes your browsers or computers.
