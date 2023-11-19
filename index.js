@@ -1,15 +1,8 @@
-// We use comparison operators to compare the value of a variable with something else.
+// Strict Equality operators - ensure both sides of the variable have type and value equality
+console.log(1 === 1); // true
+console.log("1" === 1); // false
 
-let x = 1;
-
-// The result of an expression that includes a comparison operator is either true or false.
-
-// Relational operators
-console.log(x > 0);
-console.log(x >= 1);
-console.log(x < 1);
-console.log(x <= 1);
-
-// Equality operators
-console.log(x === 1);
-console.log(x !== 1);
+// Loose Equality operators - only ensure both sides of variables have value equality
+console.log(1 == 1); // true
+console.log("1" == 1); // true
+console.log(true == 1); // true
