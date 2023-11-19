@@ -1,13 +1,15 @@
-let x = 10; // =
+// We use comparison operators to compare the value of a variable with something else.
 
-// These are equivalent
-x++; // Increment by 1
-x = x + 1; // Same as incrementing by 1
+let x = 1;
 
-// Addition assignment operator
-x += 5; // Same as x = x + 5;
+// The result of an expression that includes a comparison operator is either true or false.
 
-// Multiplication assignment operator
-x *= 5; // Same as x = x * 5;
+// Relational operators
+console.log(x > 0);
+console.log(x >= 1);
+console.log(x < 1);
+console.log(x <= 1);
 
-// All of the arithmetic operators can be combined with the assignment operator.
+// Equality operators
+console.log(x === 1);
+console.log(x !== 1);
