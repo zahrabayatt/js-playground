@@ -1,9 +1,15 @@
-// Conditional Statements:
-// - If...else
-// - Switch...case
+let role = "guest";
 
-let hour = 10;
+switch (role) {
+  case "guest":
+    console.log("Guest User");
+    break;
 
-if (hour >= 6 && hour < 12) console.log("Good morning!");
-else if (hour <= 12 && hour <= 18) console.log("Good afternoon!");
-else console.log("Good evening!");
+  case "moderator":
+    console.log("Moderator User");
+    break;
+
+  default:
+    console.log("Unknown Role");
+    break;
+}
