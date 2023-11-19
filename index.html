@@ -6,37 +6,11 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- 
-        - what can we do with JS?
-            - Web / Mobile App
-            - Real-time Networking Apps like chats, video gaming streams
-            - Command-line Tools
-            - Games
-        
-        - where does JS code run?
-            originally it designs to run in browsers, so every browsers have what we 
-            called JavaScript engine :
-            - chrome : v8
-            - firefox : SpiderMonkey
-            In 2009 Ryan Dahl took the v8 and embedded in C++ programs and called Node
-            so Node is c++ program that includes v8 which is chrome's JS engine, now with Node we can run JS outside of browsers, and we can with JS build backend for web and mobile applications so in nutshell JS can run inside of
-            browsers or Node and browsers and node provide a runtime environment for JS code.
-
-        - What is different between EcmaScript and JavaScript?
-            Definition:
-                - JavaScript: This term is often used to refer to the programming language that includes both the core language features and the additional capabilities provided by the web browser.       
-                - ECMAScript: It is the official standard upon which JavaScript is based. ECMAScript defines the rules that JavaScript (and other languages like ActionScript) should follow.         
-            -Scope:
-                - JavaScript: Refers to the language as implemented and extended by web browsers.
-                - ECMAScript: Refers to the standard that JavaScript follows. It sets the specifications for how the language should behave.     
-            -Versions:
-                - JavaScript: Refers to a specific implementation or version that includes not only ECMAScript features but also additional features provided by browsers (DOM, BOM, etc.).     
-                - ECMAScript: Refers to the standard itself and is versioned. For example, ECMAScript 5, ECMAScript 6 (also known as ES5 and ES6, respectively).
-            -Extensions:
-                - JavaScript: Includes additional features beyond what ECMAScript defines, such as the Document Object Model (DOM) and Browser Object Model (BOM) for browser interactions.
-                - ECMAScript: Focuses on the core features and syntax of the language, leaving out specifics about how the language interacts with the environment.
-            In summary, JavaScript is the practical implementation of the ECMAScript standard with added features for web development. ECMAScript provides the baseline specifications that JavaScript and other similar languages adhere to.
-     -->
     <h1>Hello world!</h1>
+    <script>
+      // This is my first JS code
+      console.log("Hello world!");
+    </script>
+    <!-- We can place the script element in both the head and body elements. However, since browsers parse documents from top to bottom, if you place the script element at the top of the document, the browser will first download the script and then parse and render the web page document. Additionally, there are instances where the script needs to interact with the document. Therefore, it is important to ensure that the document has been rendered before parsing the script. For these reasons, we typically position the script element at the end of the body element. -->
   </body>
 </html>
