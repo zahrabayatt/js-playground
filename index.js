@@ -1,25 +1,27 @@
-// We can use logical operators with non-boolean values
-console.log(false || true); // true
-console.log(false || "Zahra"); // Zahra
-console.log(false || 1); // 1
+// 8 bit = 1 Bite
+// Decimal = Binary
+// 1 = 00000001
+// 2 = 00000010
 
-// Falsy (false):
-// - undefined
-// - null
-// - 0
-// - false
-// - ''
-// - NaN
+// Bitwise OR operator
+console.log(1 | 2); // 3 - which equals to 00000011
 
-// Truthy (true): Anything that is not Falsy.
+// Bitwise AND operator
+console.log(1 & 2); // 0 - which equals to 00000000
 
-// The JS engine checks if the non-boolean operand is truthy or falsy and then applies logical operators.
+// Real world example:
+// Read, Write, Execute
+// 00000100 --> has only read permission
+// 00000110 --> has read and write permission
+// 00000111 --> has all permissions
 
-console.log(false || 1 || 2); // Evaluation starts from left to right, and as soon as it finds a truthy operand, it stops and returns that operand. This is called short-circuiting.
+const readPermission = 4;
+const writePermission = 2;
+const executePermission = 1;
 
-// Real-world example:
-let userColor = "red";
-let defaultColor = "blue";
-let currentColor = userColor || defaultColor; // If we have a value for userColor, we use that; otherwise, we use defaultColor.
+let myPermission = 0;
+myPermission = myPermission | readPermission | writePermission;
 
-console.log(currentColor);
+let message = myPermission & readPermission ? "yes" : "no";
+
+console.log(message);
