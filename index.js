@@ -1,17 +1,14 @@
-// In general, we have two categories of types:
-// - Primitives / Value Types
-// - Reference Types
+// There are two types of programming languages:
+// - Static (Statically-typed): In these languages, we declare the type of a variable, and once set, it cannot change in the future.
+// - Dynamic (Dynamically-typed): In these languages, the type of variables can change during runtime.
 
-// Primitives / Value Types:
-// - String
-let name = "Zahra"; // String Literal
-// - Number
-let age = 23; // Number Literal
-// - Boolean
-let isApproved = false; // Boolean Literal
-// - undefined
-let firstName;
-let lastName = undefined;
-// - null
+// JavaScript is a dynamic language.
+
+let name = "Zahra";
+console.log(typeof name); // string
+name = 1;
+console.log(typeof name); // number
+let firstName = undefined;
+console.log(typeof firstName); // undefined - the type and value of this variable is undefined.
 let selectedColor = null;
-// - Symbol (added in ES6)
+console.log(typeof selectedColor); // object
