@@ -1,12 +1,8 @@
-// Performing a task
-function great(name, lastName) {
-  console.log("Hello " + name + " " + lastName);
-}
+// In JavaScript, we have various operators. These operators are used in conjunction with variables and constants to create expressions, and through these expressions, we implement algorithms and logic.
 
-// Calculating a value
-function square(number) {
-  return number * number;
-}
-
-// function's call
-console.log(square(2));
+// Types of operators:
+// - Arithmetic
+// - Assignment
+// - Comparison
+// - Logical
+// - Bitwise
