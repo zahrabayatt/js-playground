@@ -1,20 +1,13 @@
-// We use arithmetic operators to perform calculations, similar to the calculations in mathematics.
+let x = 10; // =
 
-console.log(x + y); // Addition operator
-console.log(x - y); // Subtraction operator
-console.log(x * y); // Multiplication operator
-console.log(x / y); // Division operator
-console.log(x % y); // Remainder operator
-console.log(x ** y); // Exponentiation operator - x to the power of y
+// These are equivalent
+x++; // Increment by 1
+x = x + 1; // Same as incrementing by 1
 
-// Increment operator (++)
-console.log(++x); // 11 - first increment x and then log x in console
+// Addition assignment operator
+x += 5; // Same as x = x + 5;
 
-console.log(x++); // 10 - first log x in console and then increment x
-console.log(x); // 11
+// Multiplication assignment operator
+x *= 5; // Same as x = x * 5;
 
-// Decrement operator (--)
-console.log(--x); // 9 - first decrement x and then log x in console
-
-console.log(x--); // 10 - first log x in console and then decrement x
-console.log(x); // 9
+// All of the arithmetic operators can be combined with the assignment operator.
