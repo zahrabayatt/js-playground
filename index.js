@@ -1,5 +1,9 @@
-let x = 2 + 3 * 4;
-console.log(x); // 14
+let a = "blue";
+let b = "red";
 
-let y = (2 + 3) * 4;
-console.log(y); // 20
+let c = a;
+a = b;
+b = c;
+
+console.log(a);
+console.log(b);
