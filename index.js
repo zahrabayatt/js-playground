@@ -1,8 +1,4 @@
-// Strict Equality operators - ensure both sides of the variable have type and value equality
-console.log(1 === 1); // true
-console.log("1" === 1); // false
+let points = 110;
+let type = pints > 100 ? "gold" : "silver"; // ternary or conditional operator
 
-// Loose Equality operators - only ensure both sides of variables have value equality
-console.log(1 == 1); // true
-console.log("1" == 1); // true
-console.log(true == 1); // true
+console.log(type);
