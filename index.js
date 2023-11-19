@@ -1,24 +1,25 @@
-// we use logical operators to make decisions base on multi conditions
-// In JS we have three type of logical operators:
+// We can use logical operators with non-boolean values
+console.log(false || true); // true
+console.log(false || "Zahra"); // Zahra
+console.log(false || 1); // 1
 
-// 1- logical AND (&&)
-// console.log(true && true);
-// console.log(false && true);
+// Falsy (false):
+// - undefined
+// - null
+// - 0
+// - false
+// - ''
+// - NaN
 
-// let highIncome = true;
-// let goodCreditScore = true;
-// let eligibleForLoan = highIncome && goodCreditScore;
-// console.log(eligibleForLoan);
+// Truthy (true): Anything that is not Falsy.
 
-// 2- logical OR (||)
-console.log(true || true);
-console.log(false || true);
+// The JS engine checks if the non-boolean operand is truthy or falsy and then applies logical operators.
 
-let highIncome = true;
-let goodCreditScore = true;
-let eligibleForLoan = highIncome || goodCreditScore;
-console.log("Eligible", eligibleForLoan);
-// - logical NOT (!)
-let applicationRefuse = !eligibleForLoan;
+console.log(false || 1 || 2); // Evaluation starts from left to right, and as soon as it finds a truthy operand, it stops and returns that operand. This is called short-circuiting.
 
-console.log("Application Refuse", applicationRefuse);
+// Real-world example:
+let userColor = "red";
+let defaultColor = "blue";
+let currentColor = userColor || defaultColor; // If we have a value for userColor, we use that; otherwise, we use defaultColor.
+
+console.log(currentColor);
