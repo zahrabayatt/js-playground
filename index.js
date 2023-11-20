@@ -5,32 +5,20 @@ const circle = {
   },
 };
 
-// Iterating through object properties using for...in
+// Old approach for cloning an object
+const another = {};
+
 for (const key in circle) {
-  console.log(key, circle[key]);
+  another[key] = circle[key];
 }
 
-// Attempting to use for...of directly on the object, which will result in an error
-// Object is not iterable, so use Object.keys() to obtain an iterable array of keys
-// and iterate through them with for...of
-for (const key of Object.keys(circle)) {
-  console.log(key);
-}
+console.log(another);
 
-// Explaining that Object is a built-in constructor, and object literals are internally
-// translated to Object constructor function calls
-// For example: const x = { value: 1 }; translates to const x = new Object({ value: 1 });
+// Another approach for cloning an object using Object.assign()
+const thirdCircle = Object.assign({}, circle);
+// const thirdCircle = Object.assign({color: 'red'}, circle); // We can use a non-empty object for assignment
+console.log(thirdCircle);
 
-// Iterating through object entries to access key-value pairs
-// Each entry is an array where the first element is the key and the second is the value
-for (const entry of Object.entries(circle)) {
-  console.log(entry);
-}
-
-// Checking if the object has a specific property or method
-if ("color" in circle) {
-  console.log("yes color");
-}
-if ("radius" in circle) {
-  console.log("yes radius");
-}
+// Best approach for cloning an object using the spread operator
+const finalCircle = { ...circle };
+console.log(finalCircle);
