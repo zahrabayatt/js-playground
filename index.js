@@ -1,48 +1,19 @@
-// Incorrect approach: We can create a factory function so that we have a single place for the circle object.
+// Constructor Function: It is another approach for creating or constructing objects to place all the logic of the object in a single place.
 
-const circle = {
-  radius: 1,
-  location: {
-    x: 1,
-    y: 1,
-  },
-  isVisible: true,
-  draw: function () {
+// We use Camel notation for factory functions, but we use Pascal notation for constructor functions.
+
+// Constructor Function
+function Circle(radius) {
+  this.radius = radius; // add a new property
+  this.draw = function () {
     console.log("draw");
-  },
-};
-
-const circle2 = {
-  radius: 2,
-  location: {
-    x: 0,
-    y: 0,
-  },
-  isVisible: true,
-  draw: function () {
-    console.log("draw");
-  },
-};
-
-// Correct approach:
-// Factory Function
-function createCircle(radius, location, isVisible) {
-  return {
-    radius, // short syntax for radius: radius
-    location,
-    isVisible,
-    // draw: function () {
-    //   console.log("draw");
-    // },
-    // short syntax for the draw method
-    draw() {
-      console.log("draw");
-    },
   };
 }
 
-const c1 = createCircle(1, { x: 0, y: 0 }, true);
-c1.draw();
+// Create an object from the constructor function
+const circle = new Circle();
 
-const c2 = createCircle(2, { x: 0, y: 0 }, true);
-c2.draw();
+// When we use the 'new' keyword for creating an object:
+// 1 - const x = {}; creates an empty object
+// 2 - 'this' refers to the object that is created
+// 3 - the object is implicitly returned from the Circle function
