@@ -1,13 +1,9 @@
-showNumbers(10);
+console.log(countTruthy([1, 2, 3, NaN]));
 
-function showNumbers(limit) {
-  if (typeof limit !== "number") return;
-
-  for (let i = 0; i <= limit; i++) {
-    //   if (i % 2 === 0) console.log(i, "EVEN");
-    //   else console.log(i, "ODD");
-
-    const message = i % 2 === 0 ? "EVEN" : "ODD";
-    console.log(i, message);
+function countTruthy(array) {
+  let count = 0;
+  for (const element of array) {
+    if (element) count++;
   }
+  return count;
 }
