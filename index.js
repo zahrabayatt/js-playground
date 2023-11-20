@@ -1,25 +1,45 @@
-// Functions are objects and have all the member objects.
+// Value / Primitives Types:
+// - Number
+// - String
+// - Boolean
+// - Symbol
+// - undefined
+// - null
 
-function Circle(radius) {
-  this.radius = radius;
-  this.draw = function () {
-    console.log("draw");
-  };
+// Primitive are copied by their value
+// Example
+let x = 10;
+let y = x;
+
+x = 20;
+
+console.log(x, y); // 20, 10
+// Example
+let number = 10;
+function increase(number) {
+  number++;
 }
 
-console.log(Circle.name); // Circle
-console.log(Circle.length); // 1 - returns the number of arguments
-console.log(Circle.constructor); // [Function: Function] - reference to the function that creates Circle objects
-console.log(Circle.call({}, 1)); // The first argument is 'this', which we pass as an empty object. 'this' in Circle refers to that object, and the other argument is the function's argument.
-console.log(Circle.apply({}, [1])); // Exactly like the call method, except the second argument is an array of function's arguments.
+increase(number);
+console.log(number); //10
 
-// Create a function with Function
-const anotherCircle = new Function(
-  "radius",
-  `this.radius = radius;
-   this.draw = function () {
-    console.log("draw");
-  };`
-);
+// Reference Types
+// - Object
+// - Function
+// - Array
 
-const c = new anotherCircle(1);
+// References are copied by their reference
+//Example
+let a = { value: 10 };
+let b = a;
+
+a.value = 20;
+console.log(a, b); // {value: 20} {value: 20}
+// Example
+let obj = { value: 10 };
+function increase(obj) {
+  obj.value++;
+}
+
+increase(obj);
+console.log(obj); //{value: 11}
