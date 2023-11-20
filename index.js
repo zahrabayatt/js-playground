@@ -1,1 +1,2 @@
-// In JavaScript, a garbage collector is a built-in mechanism that automatically manages memory by identifying and freeing up resources (memory) that are no longer in use or referenced by the program. It tracks variables and objects, and when they are no longer needed or reachable, it releases the associated memory, preventing memory leaks and improving overall performance. Essentially, the garbage collector helps keep the memory used by a JavaScript program tidy and efficient.
+// JS Math object : built-in object in JS
+// more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
