@@ -1,11 +1,5 @@
-// Objects are collections of key-value pairs. If we have properties that are highly related, we encapsulate them in an object.
+// Incorrect approach: We can create a factory function so that we have a single place for the circle object.
 
-// We can group these variables into one object.
-let radius = 1;
-let x = 1;
-let y = 1;
-
-// Object-oriented Programming (OOP): It is the style of programming where we view a program as a collection of objects that communicate with each other to perform some functionality.
 const circle = {
   radius: 1,
   location: {
@@ -13,12 +7,42 @@ const circle = {
     y: 1,
   },
   isVisible: true,
-
-  // We can group related functions in an object, and we call these instances of functions methods.
   draw: function () {
     console.log("draw");
   },
 };
 
-// Call the draw method of the circle object.
-circle.draw();
+const circle2 = {
+  radius: 2,
+  location: {
+    x: 0,
+    y: 0,
+  },
+  isVisible: true,
+  draw: function () {
+    console.log("draw");
+  },
+};
+
+// Correct approach:
+// Factory Function
+function createCircle(radius, location, isVisible) {
+  return {
+    radius, // short syntax for radius: radius
+    location,
+    isVisible,
+    // draw: function () {
+    //   console.log("draw");
+    // },
+    // short syntax for the draw method
+    draw() {
+      console.log("draw");
+    },
+  };
+}
+
+const c1 = createCircle(1, { x: 0, y: 0 }, true);
+c1.draw();
+
+const c2 = createCircle(2, { x: 0, y: 0 }, true);
+c2.draw();
