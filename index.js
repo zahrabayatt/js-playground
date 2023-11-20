@@ -1,19 +1,29 @@
-// In JavaScript, objects are dynamic, which means that once we create them, we can edit properties or methods of objects, or add or remove properties or methods.
+// Every object has a constructor property which references the function used to create the object.
 
-const circle = {
-  radius: 1,
-};
+// Factory Function
+function createCircle(radius) {
+  return {
+    radius,
+    draw: function () {
+      console.log("draw");
+    },
+  };
+}
 
-// Add color property
-circle.color = "yellow";
-// Add draw method
-circle.draw = function () {
-  console.log("draw");
-};
+const circle = createCircle(2);
+console.log(circle.constructor);
+// [Function: Object] - Reference to Object's constructor function
 
-// Remove color property
-delete circle.color;
-// Remove draw method
-delete circle.draw;
+const x = {}; // Translates to new Object();
 
-console.log(circle);
+// Constructor Function
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function () {
+    console.log("draw");
+  };
+}
+
+const another = new Circle(1);
+console.log(another.constructor);
+// [Function: Circle] - Reference to the Circle constructor function
