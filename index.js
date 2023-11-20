@@ -1,45 +1,36 @@
-// Value / Primitives Types:
-// - Number
-// - String
-// - Boolean
-// - Symbol
-// - undefined
-// - null
+const circle = {
+  radius: 1,
+  draw() {
+    console.log("draw");
+  },
+};
 
-// Primitive are copied by their value
-// Example
-let x = 10;
-let y = x;
-
-x = 20;
-
-console.log(x, y); // 20, 10
-// Example
-let number = 10;
-function increase(number) {
-  number++;
+// Iterating through object properties using for...in
+for (const key in circle) {
+  console.log(key, circle[key]);
 }
 
-increase(number);
-console.log(number); //10
-
-// Reference Types
-// - Object
-// - Function
-// - Array
-
-// References are copied by their reference
-//Example
-let a = { value: 10 };
-let b = a;
-
-a.value = 20;
-console.log(a, b); // {value: 20} {value: 20}
-// Example
-let obj = { value: 10 };
-function increase(obj) {
-  obj.value++;
+// Attempting to use for...of directly on the object, which will result in an error
+// Object is not iterable, so use Object.keys() to obtain an iterable array of keys
+// and iterate through them with for...of
+for (const key of Object.keys(circle)) {
+  console.log(key);
 }
 
-increase(obj);
-console.log(obj); //{value: 11}
+// Explaining that Object is a built-in constructor, and object literals are internally
+// translated to Object constructor function calls
+// For example: const x = { value: 1 }; translates to const x = new Object({ value: 1 });
+
+// Iterating through object entries to access key-value pairs
+// Each entry is an array where the first element is the key and the second is the value
+for (const entry of Object.entries(circle)) {
+  console.log(entry);
+}
+
+// Checking if the object has a specific property or method
+if ("color" in circle) {
+  console.log("yes color");
+}
+if ("radius" in circle) {
+  console.log("yes radius");
+}
