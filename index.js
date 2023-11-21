@@ -1,23 +1,34 @@
-let numbers = [1, 2, 3, 4];
-let another = numbers;
+// Primitives - copy by value
 
-// Solution 1 - if we don't have references to original array
-// numbers = [];
+const first = [1, 2, 3];
+const second = [4, 5, 6];
 
-// console.log(numbers); // []
-// console.log(another); // [1,2,3,4] not garb by GC because another referee to that
+// combined
+const combined = first.concat(second);
 
-// Solution 2
-// numbers.length = 0;
-// console.log(numbers); // []
-// console.log(another); // []
+// slice
 
-// Solution 3
-// numbers.splice(0, numbers.length);
-// console.log(numbers); // []
-// console.log(another); // []
+const copy = combined.slice();
 
-// Solution 4 - not efficient for large array cause make cost performance
-while (numbers.length > 0) numbers.pop();
-console.log(numbers);
-console.log(another);
+const sliceFromIndex = combined.slice(2);
+
+const sliceRageIndex = combined.slice(1, 4);
+
+console.log(combined);
+console.log(copy);
+console.log(sliceFromIndex);
+console.log(sliceRageIndex);
+
+// References - copy by reference
+const obj = [{ id: 10 }];
+const another = [1, 2, 3];
+
+const c = obj.concat(another);
+
+const s = c.slice();
+
+obj[0].id = 12;
+
+console.log(obj);
+console.log(c);
+console.log(s);
