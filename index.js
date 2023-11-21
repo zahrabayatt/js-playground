@@ -1,10 +1,11 @@
-const numbers = arrayFromRange(-10, 2);
+const numbers = [1, 2, 3, 4];
 
-console.log(numbers);
+console.log(includes(numbers, 2));
 
-function arrayFromRange(min, max) {
-  let output = [];
-  for (let i = min; i <= max; i++) output.push(i);
+function includes(array, searchElement) {
+  for (const element of array) {
+    if (element === searchElement) return true;
+  }
 
-  return output;
+  return false;
 }
