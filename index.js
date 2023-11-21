@@ -1,13 +1,11 @@
-const post = {
-  title: "a",
-  body: "b",
-  author: "c",
-  views: 12,
-  comments: [
-    { author: "d", body: "f" },
-    { author: "d", body: "f" },
-  ],
-  isLive: false,
-};
-
+const post = new Post("a", "b", "c");
 console.log(post);
+
+function Post(title, body, author) {
+  this.title = title;
+  this.body = body;
+  this.author = author;
+  this.views = 0;
+  this.comments = [];
+  this.isLive = false;
+}
