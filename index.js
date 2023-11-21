@@ -1,17 +1,7 @@
-function sum(...args) {
-  console.log(args); // [1,2,3,4,5] - it is array of arguments that pass to function
-
-  return args.reduce((a, b) => a + b);
+function interest(principal, rate = 3.5, years = 5) {
+  return ((principal * rate) / 100) * years;
 }
 
-console.log(sum(1, 2, 3, 4, 5)); // 15
+console.log(interest(1000));
 
-// another example
-function calculateFinalPrice(discount, ...prices) {
-  const total = prices.reduce((a, b) => a + b);
-  return total * (1 - discount);
-}
-
-console.log(calculateFinalPrice(0.1, 20, 30)); // 45
-
-// Rest parameter must be final parameter
+// for best practice default parameters should be last parameters
