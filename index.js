@@ -1,14 +1,18 @@
 const numbers = [1, 2, 3];
 
-// we don't get index with for-of loop
-for (const number of numbers) {
-  console.log(number);
-}
+// const joined = numbers.join('');
 
-// numbers.forEach(function (number) {
-//   console.log(number);
-// });
-numbers.forEach((number) => console.log(number));
+// const joined = numbers.join(',');
 
-// we get index with forEach loop
-numbers.forEach((number, index) => console.log(number, number));
+const joined = numbers.join();
+
+console.log(joined);
+
+// Example - useful for urls
+const message = "This is my first message.";
+
+const parts = message.split(" ");
+console.log(parts);
+
+const combined = parts.join("_");
+console.log(combined);
