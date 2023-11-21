@@ -1,14 +1,15 @@
-const courses = [
-  { id: 1, name: "a" },
-  { id: 2, name: "b" },
-  { id: 3, name: "c" },
-];
+const numbers = [1, 2, 3, 4];
 
-let course = courses.find(function (course) {
-  return course.name === "a";
-});
+// End
+const last = numbers.pop();
+console.log(numbers);
+console.log(last);
 
-// Arrow function
-course = courses.find((course) => course.name === "a");
+// Beginning
+const first = numbers.shift();
+console.log(numbers);
+console.log(first);
 
-console.log(course); // {id: 1, name: 'a'}
+// Middle
+numbers.splice(2, 1);
+console.log(numbers);
