@@ -1,13 +1,11 @@
-const numbers = [1, 2, 3, 4, 1];
+const numbers = [1, 2, 3, 4, 6];
 
-const count = countOccurrences(numbers, 10);
+const max = getMax(numbers);
 
-console.log(count);
+console.log(max);
 
-function countOccurrences(array, searchElement) {
-  return array.reduce(
-    (accumulator, current) =>
-      current === searchElement ? accumulator + 1 : accumulator,
-    0
-  );
+function getMax(array) {
+  if (array.length === 0) return undefined;
+
+  return array.reduce((a, b) => (a > b ? a : b));
 }
