@@ -1,25 +1,12 @@
-// Primitives
-const numbers = [2, 3, 1];
+const numbers = [1, -1, 2, 3];
 
-numbers.sort();
-console.log(numbers);
+// as soon as get false from element it going to return false and doesn't check all members
+const allPositive = numbers.every((value) => value >= 0);
 
-numbers.reverse();
-console.log(numbers);
+// as soon as get true from element it going to return true and doesn't check all members
+const atLeastOnePositive = numbers.some((value) => value >= 0);
 
-// References
-const courses = [
-  { id: 1, name: "Node.js" },
-  { id: 2, name: "jS" },
-];
+console.log(allPositive);
+console.log(atLeastOnePositive);
 
-courses.sort((a, b) => {
-  const nameA = a.name.toLowerCase();
-  const nameB = b.name.toLowerCase();
-
-  if (nameA < nameB) return -1;
-  if (nameA > nameB) return 1;
-  return 0;
-});
-
-console.log(courses);
+// some and every are new method which might some browsers don't support them.
