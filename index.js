@@ -1,11 +1,6 @@
-const post = new Post("a", "b", "c");
-console.log(post);
-
-function Post(title, body, author) {
-  this.title = title;
-  this.body = body;
-  this.author = author;
-  this.views = 0;
-  this.comments = [];
-  this.isLive = false;
-}
+const priceRanges = [
+  //   { label: "$", tooltip: "Inexpensive", range: { min: 0, max: 10 } },
+  { label: "$", tooltip: "Inexpensive", minPerPerson: 0, maxPerPerson: 10 },
+  { label: "$$", tooltip: "Moderate", minPerPerson: 11, maxPerPerson: 20 },
+  { label: "$$$", tooltip: "Expensive", minPerPerson: 21, maxPerPerson: 50 },
+];
