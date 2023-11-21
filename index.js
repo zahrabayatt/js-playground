@@ -1,11 +1,14 @@
 const numbers = [1, 2, 3, 4];
 
-console.log(includes(numbers, 2));
+const output = except(numbers, [1]);
 
-function includes(array, searchElement) {
+console.log(output);
+
+function except(array, excluded) {
+  const output = [];
   for (const element of array) {
-    if (element === searchElement) return true;
+    if (!excluded.includes(element)) output.push(element);
   }
 
-  return false;
+  return output;
 }
