@@ -1,18 +1,25 @@
-const numbers = [1, 2, 3];
+// Primitives
+const numbers = [2, 3, 1];
 
-// const joined = numbers.join('');
+numbers.sort();
+console.log(numbers);
 
-// const joined = numbers.join(',');
+numbers.reverse();
+console.log(numbers);
 
-const joined = numbers.join();
+// References
+const courses = [
+  { id: 1, name: "Node.js" },
+  { id: 2, name: "jS" },
+];
 
-console.log(joined);
+courses.sort((a, b) => {
+  const nameA = a.name.toLowerCase();
+  const nameB = b.name.toLowerCase();
 
-// Example - useful for urls
-const message = "This is my first message.";
+  if (nameA < nameB) return -1;
+  if (nameA > nameB) return 1;
+  return 0;
+});
 
-const parts = message.split(" ");
-console.log(parts);
-
-const combined = parts.join("_");
-console.log(combined);
+console.log(courses);
