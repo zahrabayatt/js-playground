@@ -1,10 +1,31 @@
-const numbers = [1, 2, 3, 1, 4];
+const courses = [
+  { id: 1, name: "a" },
+  { id: 2, name: "b" },
+  { id: 3, name: "c" },
+];
 
-console.log(numbers.indexOf("a")); // -1
-console.log(numbers.indexOf("1")); // -1
-console.log(numbers.indexOf(1)); // 0
-console.log(numbers.indexOf(1, 2)); // 0
-console.log(numbers.lastIndexOf(1)); // 3
+console.log(courses.includes({ id: 1, name: "a" })); // false
 
-console.log(numbers.indexOf(1) !== -1);
-console.log(numbers.includes(1));
+let course = courses.find(function (course) {
+  return course.name === "a";
+});
+
+console.log(course); // {id: 1, name: 'a'}
+
+course = courses.find(function (course) {
+  return course.name === "f";
+});
+
+console.log(course); // undefined
+
+let courseIndex = courses.findIndex(function (course) {
+  return course.name === "a";
+});
+
+console.log(courseIndex); // 0
+
+courseIndex = courses.findIndex(function (course) {
+  return course.name === "f";
+});
+
+console.log(courseIndex); // -1
