@@ -1,13 +1,10 @@
-const numbers = [3, 4];
+const numbers = [1, 2, 3, 1, 4];
 
-// Add element to end of array:
-numbers.push(5, 6);
-console.log(numbers);
+console.log(numbers.indexOf("a")); // -1
+console.log(numbers.indexOf("1")); // -1
+console.log(numbers.indexOf(1)); // 0
+console.log(numbers.indexOf(1, 2)); // 0
+console.log(numbers.lastIndexOf(1)); // 3
 
-// Add element to beginning of array:
-numbers.unshift(1, 2);
-console.log(numbers);
-
-// Add element to middle of array:
-numbers.splice(2, 0, "a", "b");
-console.log(numbers);
+console.log(numbers.indexOf(1) !== -1);
+console.log(numbers.includes(1));
