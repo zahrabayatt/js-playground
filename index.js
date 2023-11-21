@@ -1,15 +1,23 @@
-const numbers = [1, 2, 3, 4];
+let numbers = [1, 2, 3, 4];
+let another = numbers;
 
-// End
-const last = numbers.pop();
-console.log(numbers);
-console.log(last);
+// Solution 1 - if we don't have references to original array
+// numbers = [];
 
-// Beginning
-const first = numbers.shift();
-console.log(numbers);
-console.log(first);
+// console.log(numbers); // []
+// console.log(another); // [1,2,3,4] not garb by GC because another referee to that
 
-// Middle
-numbers.splice(2, 1);
+// Solution 2
+// numbers.length = 0;
+// console.log(numbers); // []
+// console.log(another); // []
+
+// Solution 3
+// numbers.splice(0, numbers.length);
+// console.log(numbers); // []
+// console.log(another); // []
+
+// Solution 4 - not efficient for large array cause make cost performance
+while (numbers.length > 0) numbers.pop();
 console.log(numbers);
+console.log(another);
