@@ -1,26 +1,27 @@
-// string : built-in object in JS
-// more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
-
-// String primitive
-const message = "hi";
-// when we use dot notation with string primitive JS engine eternally wraps this with string object and we can work with string primitive like string object
-
-// String object
-const another = new String("hi");
-
-console.log(typeof message, typeof another); // string object
-
-// some method and property of string object
-console.log(message.length);
-console.log(message[0]);
-console.log(message.includes("my"));
-console.log(message.startsWith("i"));
-console.log(message.endsWith("h"));
-console.log(message.indexOf("h"));
-console.log(message.replace("hi", "bye")); // return new string and don't modify given sting
-console.log(message.toUpperCase());
-console.log(message.trim());
-message.split(" ");
-
 // Escape notation:
-const m = "This is my \n 'first' message ";
+let message = "This is my \n first message ";
+
+const name = "John";
+message = "Hi " + name + ",\n";
+
+// One problem with escape notation is that we can't visualize text in the code as it appears. In this situation, we can use a template literal.
+
+// Template literal ``
+let another = `This is my
+first message`;
+// We can use a template literal for an email message
+another = `Hi John,
+
+Thank you for joining my mailing list.
+
+Regards,
+Zahra Bayat
+`;
+
+another = `Hi ${name} ${2 + 3},
+
+Thank you for shopping from us.
+`;
+
+console.log(message);
+console.log(another);
