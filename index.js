@@ -1,10 +1,18 @@
-const circle = {
-  radius: 2,
-  get area() {
-    return Math.floor(Math.pow(this.radius, 2) * Math.PI);
-  },
-};
+const numbers = [1, 2, 3, 4];
 
-circle.radius = 3;
-circle.area = 20;
-console.log(circle.area, circle.radius);
+try {
+  const count = countOccurrences(true, 1);
+  console.log(count);
+} catch (error) {
+  console.log(error.message);
+}
+
+function countOccurrences(array, searchElement) {
+  if (!Array.isArray(array)) {
+    throw new Error("Invalid array.");
+  }
+  return array.reduce((accumulator, current) => {
+    const occurrence = current === searchElement ? 1 : 0;
+    return accumulator + occurrence;
+  }, 0);
+}
