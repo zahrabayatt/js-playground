@@ -1,10 +1,10 @@
-console.log(sum(1, 2, 3, 4));
-console.log(sum([5, 4, 3]));
+const circle = {
+  radius: 2,
+  get area() {
+    return Math.floor(Math.pow(this.radius, 2) * Math.PI);
+  },
+};
 
-function sum(...numbers) {
-  if (numbers.length === 1 && Array.isArray(numbers[0])) {
-    numbers = [...numbers[0]];
-  }
-
-  return numbers.reduce((a, b) => a + b);
-}
+circle.radius = 3;
+circle.area = 20;
+console.log(circle.area, circle.radius);
