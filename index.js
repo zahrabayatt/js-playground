@@ -1,38 +1,58 @@
-function start() {
-  for (let i = 0; i < 5; i++) {
-    console.log(i);
-  }
+// The 'this' keyword refers to the object that is executing the current function.
 
-  //console.log(i); // error - Creating a block-scoped variable with 'let' makes it limited to the block instance.
+// If a function is part of an object and is called as a method, 'this' within the method refers to that object itself. However, if the function is a standalone function (not a method), 'this' refers to the global object, which is the window object in browsers and the global object in Node.js.
+
+// In summery:
+// method => obj
+// function => global (window, global)
+
+const video = {
+  title: "a",
+  play() {
+    console.log(this);
+  },
+};
+
+video.stop = function () {
+  console.log(this);
+};
+
+video.play(); // {title: 'a', play: ƒ}
+video.stop(); // {title: 'a', play: ƒ}
+
+function playVideo() {
+  console.log(this);
 }
 
-start();
+playVideo(); // window
 
-function start1() {
-  for (var i = 0; i < 5; i++) {
-    console.log(i);
-  }
-
-  console.log(i); // 5 - Creating a function-scoped variable with 'var' makes it limited to the function instance.
+function Video(title) {
+  this.title = title;
+  console.log(this);
 }
 
-start1();
+const v = new Video("a"); // Video {title: 'a} - refer to the v object
 
-// var => function-scoped
-// ES6(ES2015): let, const => block-scoped
+/// In a regular function, 'this' refers to the global object (like window) or the object it is called on. However, if we use the 'new' keyword when calling a function, 'this' refers to the object created by the 'new' keyword.
 
-// When we define a global variable using 'var', it becomes attached to the window object in browsers. This is considered bad practice, as it can lead to issues if a third-party library also uses a variable with the same name. The variable could be overwritten, causing problems in our program.
+const video1 = {
+  title: "a",
+  tags: ["a", "b", "c"],
+  showTags() {
+    this.tags.forEach(function (tag) {
+      console.log(this, tag); // window - because callback function that pass in forEach is a regular function so 'this' is refers to window object
+    });
 
-var color = "red";
-console.log(window.color); // red
+    // Using forEach's second argument to explicitly set 'this'
+    this.tags.forEach(function () {
+      console.log(this); // { title: 'a', tags: [ 'a', 'b', 'c' ], showTags: [Function: showTags] } three times - 'this' refers to the video1 object
+    }, this);
 
-let age = 30;
-console.log(window.age); // undefined
+    // Using arrow function to retain the lexical scope of 'this'
+    this.tags.forEach((tag) => {
+      console.log(this, tag); // { title: 'a', tags: [ 'a', 'b', 'c' ], showTags: [Function: showTags] } a b c - 'this' refers to the video1 object
+    });
+  },
+};
 
-// Technically, when we define a function like 'sayHi' without any specific scoping, it becomes attached to the window object. This is also considered bad practice. With modules, we can encapsulate functions, avoiding the pollution of the global scope.
-
-function sayHi() {
-  console.log("hi");
-}
-
-window.sayHi();
+video1.showTags();
