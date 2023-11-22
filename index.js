@@ -1,58 +1,43 @@
-// The 'this' keyword refers to the object that is executing the current function.
-
-// If a function is part of an object and is called as a method, 'this' within the method refers to that object itself. However, if the function is a standalone function (not a method), 'this' refers to the global object, which is the window object in browsers and the global object in Node.js.
-
-// In summery:
-// method => obj
-// function => global (window, global)
-
 const video = {
-  title: "a",
-  play() {
-    console.log(this);
-  },
-};
-
-video.stop = function () {
-  console.log(this);
-};
-
-video.play(); // {title: 'a', play: ƒ}
-video.stop(); // {title: 'a', play: ƒ}
-
-function playVideo() {
-  console.log(this);
-}
-
-playVideo(); // window
-
-function Video(title) {
-  this.title = title;
-  console.log(this);
-}
-
-const v = new Video("a"); // Video {title: 'a} - refer to the v object
-
-/// In a regular function, 'this' refers to the global object (like window) or the object it is called on. However, if we use the 'new' keyword when calling a function, 'this' refers to the object created by the 'new' keyword.
-
-const video1 = {
   title: "a",
   tags: ["a", "b", "c"],
   showTags() {
+    // Using 'self' to store a reference to 'this' is a common practice, but it can be improved with modern JavaScript features.
+
+    // Approach 1: Using 'self'
+    const self = this;
     this.tags.forEach(function (tag) {
-      console.log(this, tag); // window - because callback function that pass in forEach is a regular function so 'this' is refers to window object
+      console.log(self.title, tag); // 'self' refers to 'this' in showTags, which points to the 'video' object. this is a bad practice.
     });
 
-    // Using forEach's second argument to explicitly set 'this'
-    this.tags.forEach(function () {
-      console.log(this); // { title: 'a', tags: [ 'a', 'b', 'c' ], showTags: [Function: showTags] } three times - 'this' refers to the video1 object
-    }, this);
+    // Approach 2: Using 'bind'
+    this.tags.forEach(
+      function (tag) {
+        console.log(this, tag); // 'this' refers to video object
+      }.bind(this)
+    );
 
-    // Using arrow function to retain the lexical scope of 'this'
-    this.tags.forEach((tag) => {
-      console.log(this, tag); // { title: 'a', tags: [ 'a', 'b', 'c' ], showTags: [Function: showTags] } a b c - 'this' refers to the video1 object
-    });
+    // Approach 3: Using arrow function
+    this.tags.forEach((tag) => console.log(this, tag));
+    // Arrow functions inherit 'this' from the enclosing function, solving the context issue. It is a recommended modern approach.
   },
 };
 
-video1.showTags();
+video.showTags();
+
+// Functions are objects, which means we can add built-in properties using dot notation, just like any other object.
+
+function playVideo(a, b) {
+  console.log(this, a, b);
+}
+
+playVideo.call({ name: "Mosh" }, 1, 2); // {name: 'Mosh'} 1 2 - 'call' sets 'this' to the provided object and passes additional arguments individually and call the function.
+
+playVideo.apply({ name: "Zahra" }, [1, 2]); // {name: 'Zahra' } 1 2 - 'apply' sets 'this' and passes additional arguments as an array and call the function.
+
+// playVideo.bind({ name: "Sara" })(); // {name: 'Sara'}
+// OR
+const fn = playVideo.bind({ name: "Sara" }); // 'bind' returns a new function with 'this' set to the provided object and don't call the function.
+fn(); // {name: 'Sara} undefined undefined
+
+playVideo(); // 'this' refers to the global object (e.g., 'window' in a browser)
