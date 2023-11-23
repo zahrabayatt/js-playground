@@ -1,18 +1,11 @@
-const numbers = [1, 2, 3, 4];
+// what is object-oriented programming?
+// Object-oriented programming is a programming paradigm or style of programming that is centered around objects rather than functions.
 
-try {
-  const count = countOccurrences(true, 1);
-  console.log(count);
-} catch (error) {
-  console.log(error.message);
-}
+// Languages support OPP:
+// - C#
+// - Java
+// - Ruby
+// - Python
+// - JavaScript
 
-function countOccurrences(array, searchElement) {
-  if (!Array.isArray(array)) {
-    throw new Error("Invalid array.");
-  }
-  return array.reduce((accumulator, current) => {
-    const occurrence = current === searchElement ? 1 : 0;
-    return accumulator + occurrence;
-  }, 0);
-}
+// Frameworks support OPP: Angular,...
