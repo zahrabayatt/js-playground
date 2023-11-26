@@ -1,26 +1,46 @@
-// Abstraction: Hide the details, Show the essentials
+// use Object.defineProperty to define setter or getter
 
-// Closure in JavaScript determines what variables will be accessible to an inner function.
 function Circle(radius) {
-  // let color = 'red'; // it is only a local variable inside the function.
-
   let defaultLocation = {
     x: 0,
     y: 0,
   };
-  let computeOptimumLocation = function () {
-    //...
-  };
 
   this.radius = radius;
   this.draw = function () {
-    computeOptimumLocation(0.1); // access to private method (local function)
-    console.log(defaultLocation); // access to private property (local variable)
-    console.log(this.radius); // access to property in method
+    console.log(defaultLocation);
+    console.log(this.radius);
   };
+
+  // readonly property
+  this.getDefaultLocation = function () {
+    return defaultLocation;
+  };
+
+  // OR
+
+  Object.defineProperty(this, "defaultLocation", {
+    get: function () {
+      return defaultLocation;
+    },
+  });
+
+  // Define setter and getter for property
+  Object.defineProperty(this, "defaultLocation", {
+    get: function () {
+      return defaultLocation;
+    },
+    set: function (value) {
+      // add some validation
+      if (!value.x || !value.y) {
+        throw new Error("Invalid location.");
+      }
+
+      defaultLocation = value;
+    },
+  });
 }
 
 const circle = new Circle(10);
 
-// can't access to local variable of object
-console.log(circle.computeOptimumLocation); // undefined
+circle.defaultLocation = 1;
