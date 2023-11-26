@@ -7,17 +7,14 @@ function Circle(radius) {
 
 const circle = new Circle(10);
 
-// Adding property
-circle.location = { x: 1 };
-circle["location"] = { x: 1 };
+// iterate in methods and properties of object with for-in
+for (const key in circle) {
+  if (typeof circle[key] !== "function")
+    // only log properties
+    console.log(key, circle[key]);
+}
 
-// Example of bracket notation for adding property
-const propertyName = "location";
-circle[propertyName] = { x: 1 };
+const keys = Object.keys(circle);
+console.log(keys);
 
-const pName = "center-location"; // in dot notation we can use hyphen or septical characters
-circle[pName] = { x: 1 };
-
-// Removing property
-delete circle.location;
-delete circle["center-location"];
+if ("radius" in circle) console.log("Circle has a radius.");
