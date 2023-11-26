@@ -1,46 +1,41 @@
-// use Object.defineProperty to define setter or getter
+function Stopwatch() {
+  let startTime,
+    endTime,
+    running,
+    duration = 0;
 
-function Circle(radius) {
-  let defaultLocation = {
-    x: 0,
-    y: 0,
+  this.start = function () {
+    if (running) {
+      throw new Error("Stopwatch is not started.");
+    }
+
+    running = true;
+
+    startTime = new Date();
   };
 
-  this.radius = radius;
-  this.draw = function () {
-    console.log(defaultLocation);
-    console.log(this.radius);
+  this.stop = function () {
+    if (!running) {
+      throw new Error("Stopwatch has already started.");
+    }
+
+    running = false;
+
+    endTime = new Date();
+
+    const seconds = (endTime.getTime() - startTime.getTime()) / 1000;
+    duration += seconds;
+  };
+  this.reset = function () {
+    startTime = null;
+    endTime = null;
+    running = false;
+    duration = 0;
   };
 
-  // readonly property
-  this.getDefaultLocation = function () {
-    return defaultLocation;
-  };
-
-  // OR
-
-  Object.defineProperty(this, "defaultLocation", {
+  Object.defineProperty(this, "duration", {
     get: function () {
-      return defaultLocation;
-    },
-  });
-
-  // Define setter and getter for property
-  Object.defineProperty(this, "defaultLocation", {
-    get: function () {
-      return defaultLocation;
-    },
-    set: function (value) {
-      // add some validation
-      if (!value.x || !value.y) {
-        throw new Error("Invalid location.");
-      }
-
-      defaultLocation = value;
+      return duration;
     },
   });
 }
-
-const circle = new Circle(10);
-
-circle.defaultLocation = 1;
