@@ -1,34 +1,10 @@
-function Circle(radius) {
-  // Instance Member
-  this.radius = radius;
+// we should not modify the built in object in JS because it is possible that if we use a library and in that library someone has also extend that to a prototype and added shuffle method but with a different implementation then we got a lot of issue in our code
 
-  this.move = function () {
-    console.log("move");
-  };
-}
+// In Summery, Don't modify objects you don't own!!
 
-const circle = new Circle(12);
-
-// Prototype Member
-Circle.prototype.draw = function () {
-  console.log("draw");
+Array.prototype.shuffle = function () {
+  //...
 };
 
-cl.draw();
-
-// the order of modify prototype member and creating object doesn't matter, because at the end, prototype member will still be available in circle object because we are dealing with object references so we have single object in memory and as soon as we modify that all the changes are immediately visible.
-
-// iterate over instance members
-// Object.keys only returns instance members
-console.log(Object.keys(circle));
-
-// iterate over all member(instance + prototype)
-for (const key in circle) {
-  console.log(key);
-}
-
-// some docs use 'own' word instead of 'instance'
-
-// check for existing instance member:
-console.log(circle.hasOwnProperty("radius")); // true
-console.log(circle.hasOwnProperty("draw")); // false - because draw is prototype member
+const array = [];
+array.shuffle();
