@@ -1,38 +1,25 @@
-let person = { name: "Zahra" };
-console.log(person);
-
-console.log(person.toString());
-
-for (const key in person) {
-  console.log(key); // only show name not toString method
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function () {
+    console.log("draw");
+  };
 }
-// or
-console.log(Object.keys(person)); // only show name not toString method
 
-// the reason this happen is because all property has descriptor, and with descriptor we can config if property can enumerate or not
+const circle = new Circle();
 
-let objectBase = Object.getPrototypeOf(person);
-let descriptor = Object.getOwnPropertyDescriptor(objectBase, "toString");
+// constructor functions are object so the prototype of Circle constructor is object base.
+// Circle is also the constructor of circle object, so circle.constructor = Circle function.
+console.log(Circle.prototype);
 
-console.log(descriptor);
-// {
-//     configurable: true - that means we can delete this member
-//     enumerable: false - that means we can enumerate this member
-//     value: f toString() - set to a method and it is default implementation of toString()
-//     writable: true - that means we can overwrite this member and change this implementation
-//     __proto__: Object
-// }
+// the prototype of the circle is object base.
+console.log(Object.getPrototypeOf(circle));
 
-// when we create a object we can set these attribute of property in descriptor of property for example:
+// the prototype of both Circle constructor and circle object is same and it is object base.
+console.log(Object.getPrototypeOf(circle) === Circle.prototype); //
 
-// the first arg is object we want to add property, the second arg is the name of property, the third arg is descriptor of property
-Object.defineProperty(person, "name", {
-  //get: function () {}, // define getter
-  //set: function () {}, // define setter
-  writable: false,
-  configurable: false,
-  enumerable: false,
-  value: "parisa",
-});
+// another example
+let x = {};
+// when we use object literal for creating object under the hood it translate to let x = new Object();
+// which Object is function Constructor
 
-console.log(person); // {name: 'parisa'}
+// so prototype of x is object base and prototype of Object constructor is object base
