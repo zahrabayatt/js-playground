@@ -1,24 +1,38 @@
-let myArray = [];
-console.log(myArray);
+let person = { name: "Zahra" };
+console.log(person);
 
-// prototype of myArray is array base and the prototype of array base is object base.
+console.log(person.toString());
 
-// so myArray drives from array base and array base drives form the object base, this is called multi level inheritance.
-
-function Circle(radius) {
-  this.radius = radius;
-
-  this.draw = function () {
-    console.log("draw");
-  };
+for (const key in person) {
+  console.log(key); // only show name not toString method
 }
+// or
+console.log(Object.keys(person)); // only show name not toString method
 
-const circle = new Circle(10);
+// the reason this happen is because all property has descriptor, and with descriptor we can config if property can enumerate or not
 
-// we create circle object using constructor function.
+let objectBase = Object.getPrototypeOf(person);
+let descriptor = Object.getOwnPropertyDescriptor(objectBase, "toString");
 
-// prototype of circle  object is the prototype of all objects that we create using our circle constructor, we call this prototype circle base. the prototype of circle base is object base.
+console.log(descriptor);
+// {
+//     configurable: true - that means we can delete this member
+//     enumerable: false - that means we can enumerate this member
+//     value: f toString() - set to a method and it is default implementation of toString()
+//     writable: true - that means we can overwrite this member and change this implementation
+//     __proto__: Object
+// }
 
-// every time we call circle constructor to create a new circle object this constructor will create a new object and set its prototype to circle base.
+// when we create a object we can set these attribute of property in descriptor of property for example:
 
-// In conclusion, Object created by a given constructor will have the same prototype.
+// the first arg is object we want to add property, the second arg is the name of property, the third arg is descriptor of property
+Object.defineProperty(person, "name", {
+  //get: function () {}, // define getter
+  //set: function () {}, // define setter
+  writable: false,
+  configurable: false,
+  enumerable: false,
+  value: "parisa",
+});
+
+console.log(person); // {name: 'parisa'}
