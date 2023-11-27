@@ -1,42 +1,62 @@
-// Every object (except the root object) has a prototype (parent).
-// To get the prototype of an object:
-Object.getPrototypeOf(obj);
+// putting all method in prototype is not good and it runs sorts of issue
 
-// In Chrome, you can inspect "__proto__" property. But you should
-// not use that in the code.
+// Premature optimization is the root of all evils
 
-// To get the attributes of a property:
-Object.getOwnPropertyDescriptor(obj, "propertyName");
+function Stopwatch() {
+  let startTime,
+    endTime,
+    running,
+    duration = 0;
 
-// To set the attributes for a property:
-Object.defineProperty(obj, "propertyName", {
-  configurable: false, // cannot be deleted
-  writable: false,
-  enumerable: false,
-});
+  object.defineProperty(this, "startTime", {
+    get: function () {
+      return startTime;
+    },
+  });
 
-// Constructors have a "prototype" property. It returns the object
-// that will be used as the prototype for objects created by the constructor.
-Object.prototype === Object.getPrototypeOf({});
-Array.prototype === Object.getPrototypeOf([]);
+  object.defineProperty(this, "endTime", {
+    get: function () {
+      return endTime;
+    },
+  });
 
-// All objects created with the same constructor will have the same prototype.
-// A single instance of this prototype will be stored in the memory.
-const x = {};
-const y = {};
-Object.getPrototypeOf(x) === Object.getPrototypeOf(y); // returns true
-
-// Any changes to the prototype will be immediately visible to all objects
-// referencing this prototype.
-
-// When dealing with large number of objects, it's better to put their
-// methods on their prototype. This way, a single instance of the methods
-// will be in the memory.
-Circle.prototype.draw = function () {};
-
-// To get the own/instance properties:
-Object.keys(obj);
-
-// To get all the properties (own + prototype):
-for (let key in obj) {
+  object.defineProperty(this, "running", {
+    get: function () {
+      return running;
+    },
+  });
+  Object.defineProperty(this, "duration", {
+    get: function () {
+      return duration;
+    },
+  });
 }
+Stopwatch.prototype.start = function () {
+  if (this.running) {
+    throw new Error("Stopwatch is not started.");
+  }
+
+  this.running = true;
+
+  this.startTime = new Date();
+};
+
+Stopwatch.prototype.stop = function () {
+  if (!this.running) {
+    throw new Error("Stopwatch has already started.");
+  }
+
+  this.running = false;
+
+  this.endTime = new Date();
+
+  const seconds = (this.endTime.getTime() - this.startTime.getTime()) / 1000;
+  this.duration += seconds;
+};
+
+Stopwatch.prototype.reset = function () {
+  this.startTime = null;
+  this.endTime = null;
+  this.running = false;
+  this.duration = 0;
+};
