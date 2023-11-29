@@ -1,4 +1,3 @@
-// Intermediate Function Inheritance
 function extend(Child, Parent) {
   Child.prototype = Object.create(Parent.prototype);
   Child.prototype.constructor = Child;
@@ -12,19 +11,29 @@ Shape.prototype.duplicate = function () {
 function Circle() {}
 
 extend(Circle, Shape);
-// we must overwrite method from parent after extend
+
 Circle.prototype.duplicate = function () {
   console.log("duplicate circle");
 };
 
-// if we want to call duplicate from shape in overwrite method, we do like this:
-// Circle.prototype.duplicate = function () {
-//   Shape.prototype.duplicate();
-//   // if we use this in duplicate in Shape we call method like this:
-//   // Shape.prototype.call(this);
+function Square() {}
 
-//   console.log("duplicate circle");
-// };
+extend(Square, Shape);
 
-const c = new Circle();
-c.duplicate();
+Square.prototype.duplicate = function () {
+  console.log("duplicate square");
+};
+
+// example of usage polymorphism
+const shapes = [new Square(), new Circle()];
+for (const shape of shapes) {
+  shape.duplicate();
+}
+
+// if we want to code none object oriented, we code something like this:
+
+// for (const shape of shapes) {
+//   if (shape.type === "circle") duplicateCircle();
+//   if (shape.type === "square") duplicateSquare();
+//   else duplicateShape();
+// }
