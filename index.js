@@ -1,28 +1,32 @@
-"use strict"; // enable strict mode
+// Abstraction: hiding the details and complexity and showing only the essential parts.
+// to implement abstraction we use private properties and methods
 
-const Circle = function () {
-  this.draw = function () {
-    console.log(this);
-  };
-};
-
-const c = new Circle();
-// Method Call
-c.draw(); // this will point to c object
-
-const draw = c.draw;
-
-// Function Call
-draw(); // this will point to global object - if strict mode is enable this is undefined
-
-// In ES6:
-class Square {
-  draw() {
-    console.log(this);
+// approach I: name private members with starting character underline - this is a bad approach because we can still access to private members
+class Circle {
+  constructor(radius) {
+    this._radius = radius;
   }
 }
 
-const s = new Square();
-s.draw(); // this will point to s object
-const d = s.draw;
-d(); // undefined - where ever strict mode enable or untenable - the reason is because classes executed by default in strict mode
+const c = new Circle(1);
+c._radius;
+
+// approach II: using symbols
+// a symbol is essentially a unique identifier and this is not a constructor function so we can not new that up.
+// Symbol return a uniq value - Symbol() doesn't equal to Symbol()
+const _size = Symbol();
+const _draw = Symbol();
+class Square {
+  constructor(radius) {
+    this[_size] = radius;
+  }
+
+  [_draw]() {} // ES6 we have a feature called computed property names so we can add brackets and inside of these brackets we add an expression, when that expression is evaluated the resulting value will be used as the name of a property or method.
+}
+
+const s = new Square(12);
+console.log(Object.getOwnPropertyNames(s)); // []
+
+// we can still access to private property
+const key = Object.getOwnPropertySymbols(s)[0];
+console.log(s[key]); //12
