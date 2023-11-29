@@ -1,51 +1,43 @@
-// Refactor: Create mixin function for composing objects
-function mixin(target, ...sources) {
-  // ... is rest operator - to collect member in array
-  Object.assign(target, ...sources); // ... is spread operator - to split array's members
+function Shape() {}
+function Circle() {}
+
+// Prototypical inheritance
+Circle.prototype = Object.create(Shape.prototype);
+Circle.prototype.constructor = Circle;
+
+function Rectangle(color) {
+  // To call the super constructor
+  Shape.call(this, color);
 }
+
+// Method overriding
+Shape.prototype.draw = function () {};
+Circle.prototype.draw = function () {
+  // Call the base implementation
+  Shape.prototype.draw.call(this);
+
+  // Do additional stuff here
+};
+
+// Don't create large inheritance hierarchies.
+// One level of inheritance is fine.
+
+// Use mixins to combine multiple objects
+// and implement composition in JavaScript.
 const canEat = {
-  eat: function () {
-    this.hunger--;
-    console.log("eating");
-  },
+  eat: function () {},
 };
 
 const canWalk = {
-  walk: function () {
-    console.log("walking");
-  },
+  walk: function () {},
 };
 
-const canSwim = {
-  swim: function () {
-    console.log("swim");
-  },
-};
+function mixin(target, ...sources) {
+  // Copies all the properties from all the source objects
+  // to the target object.
+  Object.assign(target, ...sources);
+}
 
-// in ES6 with assign we can copy properties and method from another object
-
-// create Person object:
-
-// with this approach, methods are define in person object
-
-//Refactor: extract this line of code in mixin function
-// const p = Object.assign({}, canEat, canWalk);
-const p = {};
-mixin(p, canWalk, canEat);
-console.log(p);
-
-// with this approach, methods are define in person's prototype
 function Person() {}
 
-//Refactor: extract this line of code in mixin function
-// Object.assign(Person.prototype, canEat, canWalk);
-mixin(Person.prototype, canWalk, canEat);
-
-const person = new Person();
-console.log(person);
-
-// create Goldfish object:
-function Goldfish() {}
-
-const goldFish = new Goldfish();
-console.log(goldFish);
+mixin(Person.prototype, canEat, canWalk);
