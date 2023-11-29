@@ -1,26 +1,51 @@
-// When we use inheritance?
+// Refactor: Create mixin function for composing objects
+function mixin(target, ...sources) {
+  // ... is rest operator - to collect member in array
+  Object.assign(target, ...sources); // ... is spread operator - to split array's members
+}
+const canEat = {
+  eat: function () {
+    this.hunger--;
+    console.log("eating");
+  },
+};
 
-// inheritance is a great tool for solving the problem of code reuse, we have to be really careful about using it because it can make your source code complex and fragile.
+const canWalk = {
+  walk: function () {
+    console.log("walking");
+  },
+};
 
-// remember keep it simple and stupid.
+const canSwim = {
+  swim: function () {
+    console.log("swim");
+  },
+};
 
-// Start with simple objects and then if we see a number of these objects share similar features then perhaps you can encapsulate those features inside of a generic object and use inheritance. remember inheritance is not only solution for these situations, we can also use composition.
+// in ES6 with assign we can copy properties and method from another object
 
-// Avoid creating inheritance hierarchs.
+// create Person object:
 
-// Problem explanation:
-// we have a parent object called Animal with two method eat and walk. we have two objects that inherit from Animal which are Dog and Person, if we want to a add another object which is Goldfish inheritance hierarch brakes cause Goldfish can not walk and it swims.
+// with this approach, methods are define in person object
 
-// Solution I:
-// change inheritance hierarch like this:
-// Animal (with eat method)
-// Mammal (with walk method) | Fish (with swim method)
-// Person and Dog            | Goldfish
+//Refactor: extract this line of code in mixin function
+// const p = Object.assign({}, canEat, canWalk);
+const p = {};
+mixin(p, canWalk, canEat);
+console.log(p);
 
-// Solution II:
-// use composition, we create three object :
-// canWalk, canEat, canSwim
-// each of these objects are plain JS objects with certain properties and methods
-// now if we want to have a Person object, we simply compose canWalk and canEat to create a Person object and with these solution we can create GoldFish and Dog objects.
-//So we don't have a hierarchy and we can come up with any combination of these objects to create new object.
-// In JS, we can use 'mixins' to achieve composition.
+// with this approach, methods are define in person's prototype
+function Person() {}
+
+//Refactor: extract this line of code in mixin function
+// Object.assign(Person.prototype, canEat, canWalk);
+mixin(Person.prototype, canWalk, canEat);
+
+const person = new Person();
+console.log(person);
+
+// create Goldfish object:
+function Goldfish() {}
+
+const goldFish = new Goldfish();
+console.log(goldFish);
