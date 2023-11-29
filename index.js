@@ -1,43 +1,24 @@
-function Shape() {}
-function Circle() {}
-
-// Prototypical inheritance
-Circle.prototype = Object.create(Shape.prototype);
-Circle.prototype.constructor = Circle;
-
-function Rectangle(color) {
-  // To call the super constructor
-  Shape.call(this, color);
+function HtmlElement() {
+  this.click = function () {
+    console.log("clicking");
+  };
 }
 
-// Method overriding
-Shape.prototype.draw = function () {};
-Circle.prototype.draw = function () {
-  // Call the base implementation
-  Shape.prototype.draw.call(this);
-
-  // Do additional stuff here
+HtmlElement.prototype.focus = function () {
+  console.log("focusing");
 };
 
-// Don't create large inheritance hierarchies.
-// One level of inheritance is fine.
+function HtmlSelectElement(items = []) {
+  this.items = items;
 
-// Use mixins to combine multiple objects
-// and implement composition in JavaScript.
-const canEat = {
-  eat: function () {},
-};
+  this.addItem = function (item) {
+    this.items.push(item);
+  };
 
-const canWalk = {
-  walk: function () {},
-};
-
-function mixin(target, ...sources) {
-  // Copies all the properties from all the source objects
-  // to the target object.
-  Object.assign(target, ...sources);
+  this.removeItem = function (item) {
+    this.items.splice(this.items.indexOf(item), 1);
+  };
 }
 
-function Person() {}
-
-mixin(Person.prototype, canEat, canWalk);
+HtmlSelectElement.prototype = new HtmlElement(); // because we have click method in object instance
+HtmlSelectElement.prototype.constructor = HtmlSelectElement;
