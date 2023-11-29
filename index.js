@@ -1,43 +1,30 @@
-function Shape(color) {
-  this.color = color;
+// Intermediate Function Inheritance
+function extend(Child, Parent) {
+  Child.prototype = Object.create(Parent.prototype);
+  Child.prototype.constructor = Child;
 }
+function Shape() {}
 
 Shape.prototype.duplicate = function () {
   console.log("duplicate");
 };
 
-// Refactor: create a method for extend from object
-function extend(Child, Parent) {
-  Child.prototype = Object.create(Parent.prototype);
-  Child.prototype.constructor = Child;
-}
+function Circle() {}
 
-function Circle(radius, color) {
-  Shape.call(this, color);
-
-  this.radius = radius;
-}
-
-Circle.prototype.draw = function () {
-  console.log("draw");
+extend(Circle, Shape);
+// we must overwrite method from parent after extend
+Circle.prototype.duplicate = function () {
+  console.log("duplicate circle");
 };
 
-// Circle inherit form Shape
-// Circle.prototype = Object.create(Shape.prototype);
-// Circle.prototype.constructor = Circle;
-// Refactor: use extend function - we call this 'Intermediate Function Inheritance'
-extend(Circle, Shape);
-function Square(size, color) {
-  Shape.call(this, color);
+// if we want to call duplicate from shape in overwrite method, we do like this:
+// Circle.prototype.duplicate = function () {
+//   Shape.prototype.duplicate();
+//   // if we use this in duplicate in Shape we call method like this:
+//   // Shape.prototype.call(this);
 
-  this.size = size;
-}
+//   console.log("duplicate circle");
+// };
 
-// Square inherit from Shape
-// Square.prototype = Object.create(Shape.prototype);
-// Square.prototype.constructor = Square;
-// Refactor: use extend function
-extend(Square, Shape);
-
-const c = new Circle(1, "red");
-const sq = new Square(1, "blue");
+const c = new Circle();
+c.duplicate();
