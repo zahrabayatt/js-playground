@@ -1,56 +1,21 @@
-function HtmlElement() {
-  this.click = function () {
-    console.log("clicking");
-  };
+// In ES6, we have classes which is syntax sugar over objects
+// with classes we can use inheritance in modern way.
+
+class Circle {
+  constructor(radius) {
+    this.radius = radius;
+    this.move = function () {
+      console.log("move");
+    }; // define method in object instance
+  }
+
+  draw() {
+    console.log("draw");
+  } // define method in object's prototype
 }
 
-HtmlElement.prototype.focus = function () {
-  console.log("focusing");
-};
+const c = new Circle(10); // Classes in ES6 forces developer to use new keywords unless they got the error
+console.log(c);
 
-function HtmlSelectElement(items = []) {
-  this.items = items;
-
-  this.addItem = function (item) {
-    this.items.push(item);
-  };
-
-  this.removeItem = function (item) {
-    this.items.splice(this.items.indexOf(item), 1);
-  };
-
-  this.render = function () {
-    return `
-<select>${this.items
-      .map(
-        (item) => `
-  <option>${item}</option>`
-      )
-      .join("")}
-</select>
-`;
-  };
-}
-
-HtmlSelectElement.prototype = new HtmlElement();
-HtmlSelectElement.prototype.constructor = HtmlSelectElement;
-
-function HtmlImageElement(src) {
-  this.src = src;
-
-  this.render = function () {
-    return `<img src="${this.src}" />`;
-  };
-}
-
-HtmlImageElement.prototype = new HtmlElement();
-HtmlImageElement.prototype.constructor = HtmlImageElement;
-
-const elements = [
-  new HtmlSelectElement([1, 2, 3]),
-  new HtmlImageElement("http://"),
-];
-
-for (const element of elements) {
-  console.log(element.render());
-}
+console.log(typeof c); // function
+// to understand this : head over https://babel.io (JS compiler) to see result of completion of this code to understand why c is function.
