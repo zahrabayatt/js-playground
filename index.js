@@ -1,39 +1,26 @@
-function extend(Child, Parent) {
-  Child.prototype = Object.create(Parent.prototype);
-  Child.prototype.constructor = Child;
-}
-function Shape() {}
+// When we use inheritance?
 
-Shape.prototype.duplicate = function () {
-  console.log("duplicate");
-};
+// inheritance is a great tool for solving the problem of code reuse, we have to be really careful about using it because it can make your source code complex and fragile.
 
-function Circle() {}
+// remember keep it simple and stupid.
 
-extend(Circle, Shape);
+// Start with simple objects and then if we see a number of these objects share similar features then perhaps you can encapsulate those features inside of a generic object and use inheritance. remember inheritance is not only solution for these situations, we can also use composition.
 
-Circle.prototype.duplicate = function () {
-  console.log("duplicate circle");
-};
+// Avoid creating inheritance hierarchs.
 
-function Square() {}
+// Problem explanation:
+// we have a parent object called Animal with two method eat and walk. we have two objects that inherit from Animal which are Dog and Person, if we want to a add another object which is Goldfish inheritance hierarch brakes cause Goldfish can not walk and it swims.
 
-extend(Square, Shape);
+// Solution I:
+// change inheritance hierarch like this:
+// Animal (with eat method)
+// Mammal (with walk method) | Fish (with swim method)
+// Person and Dog            | Goldfish
 
-Square.prototype.duplicate = function () {
-  console.log("duplicate square");
-};
-
-// example of usage polymorphism
-const shapes = [new Square(), new Circle()];
-for (const shape of shapes) {
-  shape.duplicate();
-}
-
-// if we want to code none object oriented, we code something like this:
-
-// for (const shape of shapes) {
-//   if (shape.type === "circle") duplicateCircle();
-//   if (shape.type === "square") duplicateSquare();
-//   else duplicateShape();
-// }
+// Solution II:
+// use composition, we create three object :
+// canWalk, canEat, canSwim
+// each of these objects are plain JS objects with certain properties and methods
+// now if we want to have a Person object, we simply compose canWalk and canEat to create a Person object and with these solution we can create GoldFish and Dog objects.
+//So we don't have a hierarchy and we can come up with any combination of these objects to create new object.
+// In JS, we can use 'mixins' to achieve composition.
