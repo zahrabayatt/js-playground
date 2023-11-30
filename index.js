@@ -1,32 +1,23 @@
-const _radius = new WeakMap();
-
-class Circle {
-  constructor(radius) {
-    _radius.set(this, radius);
-
-    // solution I : define getter for radius
-    // Object.defineProperty(this, "radius", {
-    //   get: function () {},
-    // });
+class Shape {
+  constructor(color) {
+    this.color = color;
   }
-
-  // solution II : define getter for radius
-  // getRadius() {
-  //   return _radius.get(this);
-  // }
-
-  // solution III : define getter and setter with new feature in ES6
-  get radius() {
-    return _radius.get(this);
-  }
-
-  set radius(value) {
-    if (value <= 0) throw new Error("invalid radius");
-    _radius.set(this, value);
+  move() {
+    console.log("move");
   }
 }
 
-const c = new Circle(1);
-console.log(c.radius);
-c.radius = 10;
-console.log(c.radius);
+class Circle extends Shape {
+  constructor(color, radius) {
+    super(color); // must call ctor of super class first in ctor of child class
+    this.radius = radius;
+  }
+  draw() {
+    console.log("draw");
+  }
+}
+
+const c = new Circle("red", 1);
+console.log(c);
+c.move();
+c.draw();
