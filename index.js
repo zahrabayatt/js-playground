@@ -1,23 +1,15 @@
 class Shape {
-  constructor(color) {
-    this.color = color;
-  }
   move() {
     console.log("move");
   }
 }
 
 class Circle extends Shape {
-  constructor(color, radius) {
-    super(color); // must call ctor of super class first in ctor of child class
-    this.radius = radius;
-  }
-  draw() {
-    console.log("draw");
+  move() {
+    // super.move(); // access to implementor of move in super class
+    console.log("circle move");
   }
 }
 
-const c = new Circle("red", 1);
-console.log(c);
-c.move();
-c.draw();
+const c = new Circle();
+c.move(); // circle move
