@@ -17,3 +17,7 @@ const x = 1;
 // babel(Babble's CLI) --presets @babel/preset-env (presets we gonna use is env)  index.js --out-dir build
 
 // if we look up in index.js in build folder we see 'use strict' added cause it added by default as a best practice. in this file also const keyword converted to var keyword cause in ES5 we don't have let or const.
+
+// in this command we only transpiler index.js but our project may have many .js files so for solving this issue we use webpack to get all our JS files and put them in a bundle, however before putting these files in a bundle we're going to run each file through babel and we're going to do that in next lecture.
+
+// What we learned in this lecture about using babel wa purely for demonstration that's not the workflow you use when building real world application  so in next lecture we lean the workflow that we should use in production.
