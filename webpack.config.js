@@ -1,54 +1,48 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+// Generated using webpack-cli https://github.com/webpack/webpack-cli
+
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
-module.exports = {
-  mode: "development",
-  //entry: path.resolve(__dirname, "src/index.js"),
-  // we can set multiple entry: ([name of entry]: path)
+const isProduction = process.env.NODE_ENV == "production";
+
+const stylesHandler = "style-loader";
+
+const config = {
   entry: {
     bundle: path.resolve(__dirname, "src/index.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    //filename: "bundle.main.js",
-    // filename: "[name].main.js", // name refer to entry's name
-    // for caching we can name output like this
     filename: "[name].[contenthash].js",
-    clean: true, // prevent keeping extra file - with each build we have a new output with this config old output will delete
+    clean: true,
+    assetModuleFilename: "[name][ext]",
   },
-
-  // source map another helpful thing for debugging cause a lot of times you'll gte a message with a line number that doesn't show you where the actual problem is in your source code so source map provide a map for your dist or production code to your coerce code.
   devtool: "source-map",
-  // for adding deserve we should first run this command: npm i -D webpack-dev-server
-  // and also we need to define a script for run dev server
-  // with devServer we don't need to liveSever
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, "dist"), // specify which path should serve
-    },
+    open: true,
+    host: "localhost",
     port: 3000,
-    open: true, // open browser automatically
-    hot: true, // enable hot reload
-    compress: true, // Enable gzip compression for everything served
-    historyApiFallback: true, // When using the HTML5 History API, the index.html page will likely have to be served in place of any 404 responses.
-    assetModuleFilename: "[name][ext]", // to get asset file in name of file with same extensor not rename to something like 0228al3k5j3k5j23kl3.svg
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Webpack App",
+      template: "index.html",
+      filename: "index.html",
+    }),
 
-  // for load images and css, sass, .. files in js file we use loader
-  // first we run this command: npm i -D sass style-loader css-loader sass-loader
+    new BundleAnalyzerPlugin(),
+    // Add your plugins here
+    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+  ],
   module: {
     rules: [
       {
-        // we create an object for each type of file
-        test: /\.scss$/, // any file ends with .scss
-        use: ["style-loader", "css-loader", "sass-loader"],
-      },
-      // to add babel loader for compatible your code with older browsers
-      // first we run this command: npm install --save-dev babel-loader @babel/core @babel/cli @babel/preset-env
-      {
-        test: /\.js$/,
-        exclude: /node_modules/, // because we don't use babel for third party library
+        test: /\.(js|jsx)$/i,
+        exclude: /node_module/,
         use: {
           loader: "babel-loader",
           options: {
@@ -56,24 +50,26 @@ module.exports = {
           },
         },
       },
-      // for load images in js files we use assets loader
-      // we don't need to install anything cause webpack comes with this asset resource loader
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i, // i : case insensitive
-        type: "asset/resource",
+        test: /\.s[ac]ss$/i,
+        use: [stylesHandler, "css-loader", "sass-loader"],
       },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: "asset",
+      },
+
+      // Add your rules for custom modules here
+      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
-  // plugins are more powerful of loader and they can do a lots of things:
-  // for example with htmlTemplePlugin, we can easily create HTML files to serve our bundles and it will all be included with <script> tags in the greeted HTMl.
-  // first we run this command: npm i -D html-webpack-plugin
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Webpack App",
-      filename: "index.html",
-      template: "src/index.html",
-    }),
-    // to add webpack analyzer first run this command: npm i -D webpack-bundle-analyzer
-    new BundleAnalyzerPlugin(),
-  ],
+};
+
+module.exports = () => {
+  if (isProduction) {
+    config.mode = "production";
+  } else {
+    config.mode = "development";
+  }
+  return config;
 };
