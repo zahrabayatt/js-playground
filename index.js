@@ -1,29 +1,14 @@
-// Utilizing error objects:
-// When a runtime error occurs, a new Error object is created and thrown. With this Error object, we can determine the type of the Error and handle it according to its type.
+// IIFE:
+// Immediately-Invoked Function Expression is a function that is executed immediately after it is created.
 
-// Types of Errors:
-// Besides error constructors, Javascript also has other core Error constructors.
+(() => {
+  // some initiation code
+  let firstVariable;
+  let secondVariable;
+})();
 
-// AggregateError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError
-// EvalError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError
-// InternalError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError
-// RangeError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError
-// ReferenceError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError
-// SyntaxError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError
-
-// Example
-try {
-  willGiveErrorSometime();
-} catch (error) {
-  if (error instanceof RangeError) {
-    rangeErrorHandler(error);
-  } else if (error instanceof ReferenceError) {
-    referenceErrorHandle(error);
-  } else {
-    errorHandler(error);
-  }
-}
+// firstVariable and secondVariable will be discarded after the function is executed.
 
 // Visit the following resources to learn more:
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling
+// https://developer.mozilla.org/en-US/docs/Glossary/IIFE
+// https://javascript.plainenglish.io/https-medium-com-javascript-in-plain-english-stop-feeling-iffy-about-using-an-iife-7b0292aba174
