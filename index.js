@@ -1,29 +1,29 @@
-// Labeled Statements:
-// JavaScript label statements are used to prefix a label to an identifier. It can be used with break and continue statement to control the flow more precisely.
+// Utilizing error objects:
+// When a runtime error occurs, a new Error object is created and thrown. With this Error object, we can determine the type of the Error and handle it according to its type.
 
-// A label is simply an identifier followed by a colon(:) that is applied to a block of code.
+// Types of Errors:
+// Besides error constructors, Javascript also has other core Error constructors.
 
-// Visit the following resources to learn more:
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/label
-// https://www.tutorialspoint.com/What-are-label-statements-in-JavaScript
-// https://javascript.info/while-for#labels-for-break-continue
+// AggregateError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError
+// EvalError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError
+// InternalError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError
+// RangeError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError
+// ReferenceError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError
+// SyntaxError-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError
 
-// The first for statement is labeled "loop1"
-loop1: for (let i = 0; i < 3; i++) {
-  // The second for statement is labeled "loop2"
-  loop2: for (let j = 0; j < 3; j++) {
-    if (i === 1 && j === 1) {
-      continue loop1;
-    }
-    console.log(`i = ${i}, j = ${j}`);
+// Example
+try {
+  willGiveErrorSometime();
+} catch (error) {
+  if (error instanceof RangeError) {
+    rangeErrorHandler(error);
+  } else if (error instanceof ReferenceError) {
+    referenceErrorHandle(error);
+  } else {
+    errorHandler(error);
   }
 }
 
-// Logs:
-// i = 0, j = 0
-// i = 0, j = 1
-// i = 0, j = 2
-// i = 1, j = 0
-// i = 2, j = 0
-// i = 2, j = 1
-// i = 2, j = 2
+// Visit the following resources to learn more:
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling
