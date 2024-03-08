@@ -1,5 +1,5 @@
-// Example - using JSON data
-const getTodos = (callback) => {
+// Example - callback hell
+const getTodos = (resource, callback) => {
   const request = new XMLHttpRequest();
 
   request.addEventListener("readystatechange", () => {
@@ -11,16 +11,17 @@ const getTodos = (callback) => {
     }
   });
 
-  //request.open("GET", "https://jsonplaceholder.typicode.com/todos/");
-  request.open("GET", "todos.json"); // read data from json file
-
+  request.open("GET", resource);
   request.send();
 };
 
-getTodos((err, data) => {
-  if (err) {
-    console.log(err);
-  } else {
+// callback hell
+getTodos("todos/pari.json", (err, data) => {
+  console.log(data);
+  getTodos("todos/zahra.json", (err, data) => {
     console.log(data);
-  }
+    getTodos("todos/ali.json", (err, data) => {
+      console.log(data);
+    });
+  });
 });
