@@ -1,12 +1,21 @@
-sources: //www.youtube.com/watch?v=aNDfsHQ5Gts&list=PL4cUxeGkcC9jx2TTZk3IGWKSbtugYdrlu&index=2
+// Example - HTTP Request and status codes
+const request = new XMLHttpRequest();
 
-// Example - what is async JS?
-https: console.log(1);
-console.log(2);
+request.addEventListener("readystatechange", () => {
+  if (request.readyState === 4 && request.status === 200) {
+    console.log(request.responseText);
+  } else if (request.readyState === 4) {
+    console.log("could not fetch the data.");
+  }
+});
 
-setTimeout(() => {
-  console.log("callback function fired.");
-}, 2000);
+request.open("GET", "https://jsonplaceholder.typicode.com/todos/");
+request.send();
 
-console.log(3);
-console.log(4);
+// Make HTTP requests to get data from another server
+// We make these requests to API endpoints
+// Example API endpoint: http://www.musicapi.com/artist/moby
+
+// // what is readyState? https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
+
+// // what is status code? https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
