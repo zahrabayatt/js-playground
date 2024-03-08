@@ -1,35 +1,4 @@
-// Example - Promises
-const getSomething = () => {
-  return new Promise((resolve, reject) => {
-    // fetch somethings
-    // if data receive:
-    resolve("some data");
-
-    //if we get error:
-    // reject("some error");
-  });
-};
-
-// fist argument in then fires when promise resolves and second argument in then fires when promise rejects
-getSomething().then(
-  (data) => {
-    console.log(data);
-  },
-  (err) => {
-    console.log(err);
-  }
-);
-
-// better solution
-getSomething()
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-//----------------------
+// Example - Chaining promise
 const getTodos = (resource) => {
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
@@ -48,10 +17,34 @@ const getTodos = (resource) => {
   });
 };
 
+// getTodos("todos/pari.json")
+//   .then((data) => {
+//     console.log("promise resolved.", data);
+//     getTodos("todos/ali.json").then((data) => {
+//       console.log(data);
+//       getTodos("todos/zahra.json").then((data) => {
+//         console.log(data);
+//       });
+//     });
+//   })
+//   .catch((err) => {
+//     console.log("promise rejected: ");
+//   });
+
+// Chaining promises
 getTodos("todos/pari.json")
   .then((data) => {
-    console.log("promise resolved.", data);
+    console.log("promise 1 resolved: ", data);
+    return getTodos("todos/ali.json");
+  })
+  .then((data) => {
+    console.log("promise 2 resolved: ", data);
+    return getTodos("todos/zahra.json");
+  })
+  .then((data) => {
+    console.log("promise 3 resolved: ", data);
   })
   .catch((err) => {
-    console.log("promise rejected: ", err);
+    // if we get any error form any of these promises we catch it here
+    console.log("promise rejected: ");
   });
