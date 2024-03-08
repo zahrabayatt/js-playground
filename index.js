@@ -1,21 +1,3 @@
-// Example - Throwing Errors in Async functions
-const getTodos = async () => {
-  const response = await fetch("todos/alis.json");
-  if (response.status != 200) {
-    throw new Error("cannot fetch the data!");
-  }
-  const data = await response.json();
-
-  return data;
-};
-
-console.log(1);
-console.log(2);
-
-// non-blocking
-getTodos()
-  .then((data) => console.log("resolved: ", data))
-  .catch((err) => console.log("rejected: ", err.message));
-
-console.log(3);
-console.log(4);
+// Full HTTP Networking Course – Fetch and REST APIs in JavaScript
+// https://www.boot.dev/assignments/09ed0562-5760-4a78-919a-0233fa9b3227
+// https://youtu.be/2JYT5f2isg4?si=FSSPTp21243b3C5V
