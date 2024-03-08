@@ -1,50 +1,16 @@
-// Example - Chaining promise
-const getTodos = (resource) => {
-  return new Promise((resolve, reject) => {
-    const request = new XMLHttpRequest();
+// Example - Make HTTPRequest using Fetch API
 
-    request.addEventListener("readystatechange", () => {
-      if (request.readyState === 4 && request.status === 200) {
-        const data = JSON.parse(request.responseText);
-        resolve(data);
-      } else if (request.readyState === 4) {
-        reject("could not fetch the data.");
-      }
-    });
+// so far we made HTTPRequest using XMLHTTPRequest object
 
-    request.open("GET", resource);
-    request.send();
-  });
-};
-
-// getTodos("todos/pari.json")
-//   .then((data) => {
-//     console.log("promise resolved.", data);
-//     getTodos("todos/ali.json").then((data) => {
-//       console.log(data);
-//       getTodos("todos/zahra.json").then((data) => {
-//         console.log(data);
-//       });
-//     });
-//   })
-//   .catch((err) => {
-//     console.log("promise rejected: ");
-//   });
-
-// Chaining promises
-getTodos("todos/pari.json")
-  .then((data) => {
-    console.log("promise 1 resolved: ", data);
-    return getTodos("todos/ali.json");
+fetch("todos/alis.json")
+  .then((response) => {
+    //console.log("resolved: ", response);
+    if (response.status === 200) return response.json();
   })
   .then((data) => {
-    console.log("promise 2 resolved: ", data);
-    return getTodos("todos/zahra.json");
-  })
-  .then((data) => {
-    console.log("promise 3 resolved: ", data);
+    console.log(data);
   })
   .catch((err) => {
-    // if we get any error form any of these promises we catch it here
-    console.log("promise rejected: ");
+    // only catches errors, if we got some kind of networking errors
+    console.log("rejected: ", err);
   });
