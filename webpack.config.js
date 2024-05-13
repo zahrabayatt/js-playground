@@ -1,11 +1,12 @@
 const path = require("path");
 
 module.exports = {
-  mode: "production", // or 'development'
+  mode: "development", // or 'development'
   entry: ["./src/hello.js", "./src/hi.ts"], // Array of entry points
   output: {
     filename: "index.js", // Output file
     path: path.resolve(__dirname, "dist"),
+    library: "MyLibrary",
   },
   module: {
     rules: [
