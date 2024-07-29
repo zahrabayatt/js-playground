@@ -1,29 +1,10 @@
-// getElementById()
+const title = document.querySelector("#main-heading");
 
-const title = document.getElementById("main-heading");
+title.style.color = "red";
 
-console.log(title);
+const listItems = document.querySelectorAll(".list-items");
 
-// getElementByClassName()
-
-const listItems = document.getElementsByClassName("list-items");
-
-console.log(listItems);
-
-// getElementByTagName()
-
-const liItems = document.getElementsByTagName("li");
-
-console.log(liItems);
-
-// querySelector()
-
-const container = document.querySelector("div");
-
-console.log(container);
-
-// querySelectorAll()
-
-const containers = document.querySelectorAll("div");
-
-console.log(containers);
+for (let i = 0; i < listItems.length; i++) {
+  const element = listItems[i];
+  element.style.fontSize = "5rem";
+}
