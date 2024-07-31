@@ -4,14 +4,14 @@
 
 // Event Propagation
 
-//Capturing
+//Bobbling
 
 window.addEventListener(
   "click",
   function () {
     console.log("Window");
   },
-  true
+  false
 );
 
 document.addEventListener(
@@ -19,15 +19,16 @@ document.addEventListener(
   function () {
     console.log("Document");
   },
-  true
+  false
 );
 
 document.querySelector(".div2").addEventListener(
   "click",
-  function () {
+  function (e) {
+    //e.stopPropagation();
     console.log("DIV 2");
   },
-  true
+  false
 );
 
 document.querySelector(".div1").addEventListener(
@@ -35,7 +36,7 @@ document.querySelector(".div1").addEventListener(
   function () {
     console.log("DIV 1");
   },
-  true
+  false
 );
 
 document.querySelector("button").addEventListener(
@@ -44,5 +45,5 @@ document.querySelector("button").addEventListener(
     console.log(e);
     console.log(e.target);
   },
-  true
+  false
 );
