@@ -1,17 +1,48 @@
-// Event Listeners
+// Phase 1 : Capturing -> from root to target
+// Phase 2 : target
+//Phase 3: Bobbling -> from target to root
 
-// Revel Event
+// Event Propagation
 
-const revealBtn = document.querySelector(".reveal-btn");
+//Capturing
 
-const hiddenContent = document.querySelector(".hidden-content");
+window.addEventListener(
+  "click",
+  function () {
+    console.log("Window");
+  },
+  true
+);
 
-function revealContent() {
-  if (hiddenContent.classList.contains("reveal-btn")) {
-    hiddenContent.classList.remove("reveal-btn");
-  } else {
-    hiddenContent.classList.add("reveal-btn");
-  }
-}
+document.addEventListener(
+  "click",
+  function () {
+    console.log("Document");
+  },
+  true
+);
 
-revealBtn.addEventListener("click", revealContent);
+document.querySelector(".div2").addEventListener(
+  "click",
+  function () {
+    console.log("DIV 2");
+  },
+  true
+);
+
+document.querySelector(".div1").addEventListener(
+  "click",
+  function () {
+    console.log("DIV 1");
+  },
+  true
+);
+
+document.querySelector("button").addEventListener(
+  "click",
+  function (e) {
+    console.log(e);
+    console.log(e.target);
+  },
+  true
+);
