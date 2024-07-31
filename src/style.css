@@ -16,6 +16,8 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 4rem;
+  display: flex;
+  flex-direction: column;
 }
 
 #sports {
@@ -64,14 +66,43 @@ button {
 }
 
 .container {
+  font-size: 2rem;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+}
+
+.boxes {
   border: solid 5px #fff;
   border-radius: 20px;
-  font-size: 3.5rem;
-  text-align: center;
-  padding: 50px;
-  color: #fff;
+  padding: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px;
+  margin: 30px;
+}
+
+.boxes button {
+  border: solid 5px #fff;
+  border-radius: 20px;
+  font-size: 3rem;
+  padding: 20px 40px;
+  margin: 30px;
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+
+.boxes button:hover {
+  background-color: #fff;
+  color: #0f2027;
 }
 
 #main-heading {
-  padding: 30px;
+  padding: 90px;
+  color: #fff;
+  text-align: center;
 }

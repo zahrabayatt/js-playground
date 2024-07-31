@@ -1,16 +1,21 @@
-// Traverse the DOM
+// Event Listeners
 
-// Sibling Node Traversal
+//element.addEventListener("click", function)
 
-const ul = document.querySelector("ul");
-const div = document.querySelector("div");
+const buttonTwo = document.querySelector(".btn-2");
 
-console.log(div.childNodes);
+function alertBtn() {
+  alert("I also love JS");
+}
 
-console.log(ul.previousSibling);
-console.log(ul.nextSibling);
+buttonTwo.addEventListener("click", alertBtn);
 
-console.log(div.children);
+// Mouseover event
 
-console.log(ul.previousElementSibling);
-console.log(ul.nextElementSibling);
+const boxThree = document.querySelector(".box-3");
+
+function changeBgColor() {
+  boxThree.style.backgroundColor = "blue";
+}
+
+boxThree.addEventListener("mouseover", changeBgColor);
