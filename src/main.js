@@ -1,49 +1,22 @@
-// Phase 1 : Capturing -> from root to target
-// Phase 2 : target
-//Phase 3: Bobbling -> from target to root
+// DOM Manipulation
 
-// Event Propagation
+// Event Delegation
 
-//Bobbling
+// It allows users to append a SINGLE event to a parent element that adds it to all of its present a AND future descendants that match a selector.
 
-window.addEventListener(
-  "click",
-  function () {
-    console.log("Window");
-  },
-  false
-);
+document.querySelector("#sports").addEventListener("click", function (e) {
+  const target = e.target;
 
-document.addEventListener(
-  "click",
-  function () {
-    console.log("Document");
-  },
-  false
-);
+  if (target.matches("li")) {
+    console.log(target.id + " is clicked");
+    target.style.backgroundColor = "lightgrey";
+  }
+});
 
-document.querySelector(".div2").addEventListener(
-  "click",
-  function () {
-    console.log("DIV 2");
-  },
-  { once: true }
-);
+const sports = document.querySelector("#sports");
+const newSport = document.createElement("li");
 
-document.querySelector(".div1").addEventListener(
-  "click",
-  function () {
-    console.log("DIV 1");
-  },
-  false
-);
+newSport.innerText = "rugby";
+newSport.setAttribute("id", "rugby");
 
-document.querySelector(".button").addEventListener(
-  "click",
-  function (e) {
-    e.preventDefault();
-    console.log(e);
-    e.target.innerText = "clicked!";
-  },
-  false
-);
+sports.appendChild(newSport);

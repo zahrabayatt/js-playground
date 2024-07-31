@@ -16,9 +16,22 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 4rem;
-  display: flex;
-  flex-direction: column;
-  padding: 120px;
+}
+
+#sports {
+  border: solid 5px #fff;
+  padding: 30px;
+  border-radius: 20px;
+  font-size: 3rem;
+  text-align: center;
+  color: #fff;
+}
+
+#sports li {
+  margin-bottom: 10px;
+  border: solid 2px #fff;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .div2 {
@@ -29,7 +42,6 @@ body {
   padding: 80px;
   color: #fff;
 }
-
 .div1 {
   border: solid 5px #fff;
   border-radius: 20px;
@@ -39,7 +51,7 @@ body {
   color: #fff;
 }
 
-.button {
+button {
   display: block;
   font-size: 30px;
   background: none;
@@ -48,5 +60,4 @@ body {
   border-radius: 10px;
   padding: 10px 30px;
   margin-top: 10px;
-  display: block;
 }
