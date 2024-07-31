@@ -1,18 +1,16 @@
 // Traverse the DOM
 
-// Child Node Traversal
+// Sibling Node Traversal
 
 const ul = document.querySelector("ul");
+const div = document.querySelector("div");
 
-console.log(ul);
+console.log(div.childNodes);
 
-console.log(ul.childNodes);
-console.log(ul.firstChild);
-console.log(ul.lastChild);
+console.log(ul.previousSibling);
+console.log(ul.nextSibling);
 
-console.log(ul.children);
-console.log(ul.firstElementChild);
-console.log(ul.lastElementChild);
+console.log(div.children);
 
-// ul.firstChild.style.backgroundColor = "blue";
-ul.childNodes[1].style.backgroundColor = "blue";
+console.log(ul.previousElementSibling);
+console.log(ul.nextElementSibling);
