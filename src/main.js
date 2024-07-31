@@ -38,9 +38,10 @@ document.querySelector(".div1").addEventListener(
   false
 );
 
-document.querySelector("button").addEventListener(
+document.querySelector(".button").addEventListener(
   "click",
   function (e) {
+    e.preventDefault();
     console.log(e);
     e.target.innerText = "clicked!";
   },

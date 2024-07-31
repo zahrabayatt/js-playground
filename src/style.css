@@ -39,7 +39,7 @@ body {
   color: #fff;
 }
 
-button {
+.button {
   display: block;
   font-size: 30px;
   background: none;
@@ -48,4 +48,5 @@ button {
   border-radius: 10px;
   padding: 10px 30px;
   margin-top: 10px;
+  display: block;
 }
