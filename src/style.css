@@ -23,16 +23,15 @@ body {
   border-radius: 20px;
   font-size: 3rem;
   text-align: center;
-  color: #fff;
+  color: #0f2027;
 }
 
-#sports li {
+.list-items {
   margin-bottom: 10px;
   border: solid 2px #fff;
   padding: 5px;
   cursor: pointer;
   background-color: #fff;
-  color: #0f2027;
 }
 
 .div2 {
