@@ -1,10 +1,9 @@
-const title = document.querySelector("#main-heading");
+const ul = document.querySelector("ul");
 
-title.style.color = "red";
+// Creating Elements
 
-const listItems = document.querySelectorAll(".list-items");
+const li = document.createElement("li");
 
-for (let i = 0; i < listItems.length; i++) {
-  const element = listItems[i];
-  element.style.fontSize = "5rem";
-}
+// Adding Element
+
+ul.append(li);
