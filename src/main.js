@@ -1,39 +1,21 @@
+// Traverse the DOM
+
+// Parent Node Traversal
+
 const ul = document.querySelector("ul");
 
-// Creating Elements
+console.log(ul);
 
-const li = document.createElement("li");
+console.log(ul.parentNode);
+console.log(ul.parentElement);
 
-// Adding Element
+console.log(ul.parentNode.parentNode);
+console.log(ul.parentElement.parentElement);
 
-ul.append(li);
+// Different between ParentElement & ParentNode
 
-// Modifying the text
+const html = document.documentElement;
 
-const firstListItem = document.querySelector(".list-items");
-
-console.log(firstListItem.innerText);
-console.log(firstListItem.textContent);
-console.log(firstListItem.innerHTML);
-
-li.innerText = "X-men";
-
-// Modifying Attributes
-
-li.setAttribute("id", "main-heading");
-li.removeAttribute("id");
-
-const title = document.querySelector("#main-heading");
-
-console.log(title.getAttribute("id"));
-
-// Modifying Classes
-
-li.classList.add("list-items");
-li.classList.remove("list-items");
-
-console.log(li.classList.contains("list-items"));
-
-// Remove Elements
-
-li.remove();
+console.log(html);
+console.log(html.parentNode);
+console.log(html.parentElement);
