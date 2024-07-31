@@ -18,6 +18,7 @@ body {
   font-size: 4rem;
   display: flex;
   flex-direction: column;
+  padding: 120px;
 }
 
 #sports {
@@ -72,18 +73,23 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 90px;
+  gap: 30px;
+  width: 100%;
+  height: 100%;
 }
 
 .boxes {
   border: solid 5px #fff;
   border-radius: 20px;
-  padding: 90px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 120px;
   margin: 30px;
+  height: 100%;
+  font-size: 3.5rem;
 }
 
 .boxes button {
@@ -105,4 +111,17 @@ button {
   padding: 90px;
   color: #fff;
   text-align: center;
+}
+
+.hidden-content {
+  display: none;
+}
+
+.reveal-btn {
+  display: block;
+}
+
+button.boxes {
+  width: 100%;
+  cursor: pointer;
 }

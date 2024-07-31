@@ -1,21 +1,17 @@
 // Event Listeners
 
-//element.addEventListener("click", function)
+// Revel Event
 
-const buttonTwo = document.querySelector(".btn-2");
+const revealBtn = document.querySelector(".reveal-btn");
 
-function alertBtn() {
-  alert("I also love JS");
+const hiddenContent = document.querySelector(".hidden-content");
+
+function revealContent() {
+  if (hiddenContent.classList.contains("reveal-btn")) {
+    hiddenContent.classList.remove("reveal-btn");
+  } else {
+    hiddenContent.classList.add("reveal-btn");
+  }
 }
 
-buttonTwo.addEventListener("click", alertBtn);
-
-// Mouseover event
-
-const boxThree = document.querySelector(".box-3");
-
-function changeBgColor() {
-  boxThree.style.backgroundColor = "blue";
-}
-
-boxThree.addEventListener("mouseover", changeBgColor);
+revealBtn.addEventListener("click", revealContent);
