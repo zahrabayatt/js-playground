@@ -24,11 +24,10 @@ document.addEventListener(
 
 document.querySelector(".div2").addEventListener(
   "click",
-  function (e) {
-    //e.stopPropagation();
+  function () {
     console.log("DIV 2");
   },
-  false
+  { once: true }
 );
 
 document.querySelector(".div1").addEventListener(
@@ -43,7 +42,7 @@ document.querySelector("button").addEventListener(
   "click",
   function (e) {
     console.log(e);
-    console.log(e.target);
+    e.target.innerText = "clicked!";
   },
   false
 );
