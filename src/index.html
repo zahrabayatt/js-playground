@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frequently Asked Questions</title>
+    <title>Stop-Watch</title>
     <!-- StyleSheet -->
     <link rel="stylesheet" href="style.css" />
     <!-- Global Font Links -->
@@ -23,34 +23,15 @@
     />
   </head>
   <body>
-    <div class="accordion">
-      <h2 class="accordion-title">Frequently Asked Questions</h2>
-      <div class="content-container">
-        <div class="question">What is the return Policy</div>
-        <div class="answer">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-          rerum perspiciatis consequuntur exercitationem necessitatibus
-          quibusdam error facilis aperiam distinctio quaerat hic commodi cum
-          temporibus quam similique, ex ducimus asperiores quos.
-        </div>
-      </div>
-      <div class="content-container">
-        <div class="question">What is the return Policy</div>
-        <div class="answer">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-          rerum perspiciatis consequuntur exercitationem necessitatibus
-          quibusdam error facilis aperiam distinctio quaerat hic commodi cum
-          temporibus quam similique, ex ducimus asperiores quos.
-        </div>
-      </div>
-      <div class="content-container">
-        <div class="question">What is the return Policy</div>
-        <div class="answer">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-          rerum perspiciatis consequuntur exercitationem necessitatibus
-          quibusdam error facilis aperiam distinctio quaerat hic commodi cum
-          temporibus quam similique, ex ducimus asperiores quos.
-        </div>
+    <div class="container">
+      <div id="timer">00:00:00</div>
+      <div class="buttons">
+        <button id="startStopBtn">
+          <i class="fa-solid fa-play" id="play"></i>
+        </button>
+        <button id="restBtn">
+          <i class="fa-solid fa-arrow-rotate-left" id="rest"></i>
+        </button>
       </div>
     </div>
     <script src="./main.js"></script>
