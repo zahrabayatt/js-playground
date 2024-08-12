@@ -1,74 +1,45 @@
-// Variables for buttons
+// Variables
 
-const startStopBtn = document.querySelector("#startStopBtn");
-const restBtn = document.querySelector("#restBtn");
+const addTask = document.getElementById("add-task");
+const taskContainer = document.getElementById("task-container");
+const inputTask = document.getElementById("input-task");
 
-// Variables for time values
+// Event Listener for Add Button
 
-let seconds = 0;
-let minutes = 0;
-let hours = 0;
+addTask.addEventListener("click", function () {
+  let task = document.createElement("div");
+  task.classList.add("task");
 
-// Variables for leading zero
+  let li = document.createElement("li");
+  li.innerText = `${inputTask.value}`;
+  task.appendChild(li);
 
-let leadingSeconds = 0;
-let leadingMinutes = 0;
-let leadingHours = 0;
+  let checkButton = document.createElement("button");
+  checkButton.innerHTML = '<i class="fa-solid fa-check"></i>';
+  checkButton.classList.add("checkTask");
+  task.appendChild(checkButton);
 
-// Variables for set interval & timer status
+  let deleteButton = document.createElement("button");
+  deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+  deleteButton.classList.add("deleteTask");
+  task.appendChild(deleteButton);
 
-let timerInterval = null;
-let timerStatus = "stopped";
-
-// Stop Watch Function
-
-function stopWatch() {
-  seconds++;
-
-  if (seconds / 60 === 1) {
-    seconds = 0;
-    minutes++;
-
-    if (minutes / 60 === 1) {
-      minutes = 0;
-      hours++;
-    }
-  }
-
-  leadingSeconds = seconds < 10 ? "0" + seconds.toString() : seconds;
-
-  leadingMinutes = minutes < 10 ? "0" + minutes.toString() : minutes;
-
-  leadingHours = hours < 10 ? "0" + hours.toString() : hours;
-
-  let displayTimer = (document.getElementById("timer").innerText =
-    leadingHours + ":" + leadingMinutes + ":" + leadingSeconds);
-}
-
-//window.setInterval(stopWatch, 1000);
-startStopBtn.addEventListener("click", function () {
-  if (timerStatus === "stopped") {
-    timerInterval = window.setInterval(stopWatch, 1000);
-
-    document.getElementById("startStopBtn").innerHTML =
-      '<i class="fa-solid fa-pause" id="pause"></i>';
-    timerStatus = "started";
+  if (inputTask.value === "") {
+    alert("Please Enter a Task");
   } else {
-    window.clearInterval(timerInterval);
-    document.getElementById("startStopBtn").innerHTML =
-      '<i class="fa-solid fa-play" id="play"></i>';
-    timerStatus = "stopped";
+    taskContainer.appendChild(task);
   }
-});
 
-restBtn.addEventListener("click", function () {
-  window.clearInterval(timerInterval);
-  seconds = 0;
-  minutes = 0;
-  hours = 0;
+  inputTask.value = "";
 
-  document.getElementById("timer").innerHTML = "00:00:00";
-  document.getElementById("startStopBtn").innerHTML =
-    '<i class="fa-solid fa-play" id="play"></i>';
-  timerStatus = "stopped";
+  checkButton.addEventListener("click", function () {
+    checkButton.parentElement.style.textDecoration = "line-through";
+  });
+
+  deleteButton.addEventListener("click", function (e) {
+    // let target = e.target;
+
+    // target.parentElement.parentElement.remove();
+    deleteButton.parentElement.remove();
+  });
 });
