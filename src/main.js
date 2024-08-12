@@ -1,22 +1,55 @@
-// DOM Manipulation
+// Variables
 
-// Event Delegation
+let btn = document.querySelector("#new-quote");
+let quote = document.querySelector(".qoute");
+let person = document.querySelector(".person");
 
-// It allows users to append a SINGLE event to a parent element that adds it to all of its present a AND future descendants that match a selector.
+const quotes = [
+  {
+    quote: `"The best way to find yourself is to lose yourself in the service of others."`,
+    person: ` Mahatma Gandhi`,
+  },
+  {
+    quote: `"If you want to live a happy life, tie it to a goal, not to people or things."`,
+    person: ` Albert Einstein`,
+  },
+  {
+    quote: `"At his best, man is the noblest of all animals; separated from law and justice he is the worst."`,
+    person: `Aristotle`,
+  },
+  {
+    quote: `"Your time is limited, so dont waste it living someone else's life."`,
+    person: ` Steve Jobs`,
+  },
+  {
+    quote: `"Tell me and I forget. Teach me and I remember. Involve me and I learn."`,
+    person: ` Benjamin Franklin`,
+  },
+  {
+    quote: `"If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough."`,
+    person: `Oprah Winfrey`,
+  },
+  {
+    quote: `"t does not matter how slowly you go as long as you do not stop."`,
+    person: `Confucius`,
+  },
+  {
+    quote: `"Our lives begin to end the day we become silent about things that matter."`,
+    person: `Martin Luther King, Jr.`,
+  },
+  {
+    quote: `"Remember that not getting what you want is sometimes a wonderful stroke of luck."`,
+    person: `Dalai Lama`,
+  },
+  {
+    quote: `"The journey of a thousand miles begins with one step."`,
+    person: `Lao Tzu`,
+  },
+];
 
-document.querySelector("#sports").addEventListener("click", function (e) {
-  const target = e.target;
+btn.addEventListener("click", function () {
+  let random = Math.floor(Math.random() * quotes.length);
 
-  if (target.matches("li")) {
-    console.log(target.id + " is clicked");
-    target.style.backgroundColor = "lightgrey";
-  }
+  quote.innerText = quotes[random].quote;
+  person.innerText = quotes[random].person;
 });
-
-const sports = document.querySelector("#sports");
-const newSport = document.createElement("li");
-
-newSport.innerText = "rugby";
-newSport.setAttribute("id", "rugby");
-
-sports.appendChild(newSport);

@@ -3,17 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Master DOM Manipulation</title>
+    <title>Quote GEnerator</title>
+    <!-- StyleSheet -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Global Font Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <ul id="sports">
-      <li id="football">Football</li>
-      <li id="basketball">basketball</li>
-      <li id="boxing">boxing</li>
-      <li id="tennis">tennis</li>
-      <li id="golf">golf</li>
-    </ul>
+    <div class="container">
+      <div class="header">
+        <h2>JavaScript Quote Generator</h2>
+      </div>
+      <div class="main-content">
+        <div class="text-area">
+          <span class="qoute">
+            "I do the very best I know how - the very best I can; and I mean to
+            keep on doing so until the end."
+          </span>
+        </div>
+        <div class="person">Abraham Lincoln</div>
+        <div class="button-area">
+          <button id="new-quote">New Quote</button>
+        </div>
+      </div>
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>
