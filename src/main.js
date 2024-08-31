@@ -1,5 +1,3 @@
-// script.js
-
 let currentSlide = 0;
 const slidesToShow = 4; // Number of slides to show at once
 const totalSlides = document.querySelectorAll(".slide").length;
@@ -34,5 +32,13 @@ document.addEventListener("keydown", (event) => {
     moveToSlide(currentSlide - 1);
   } else if (event.key === "ArrowDown") {
     moveToSlide(currentSlide + 1);
+  }
+});
+
+document.getElementById("goToSlideBtn").addEventListener("click", () => {
+  const slideNumber = parseInt(document.getElementById("slideInput").value);
+  if (!isNaN(slideNumber)) {
+    const slideIndex = slideNumber - 1; // Convert to zero-based index
+    moveToSlide(slideIndex);
   }
 });
