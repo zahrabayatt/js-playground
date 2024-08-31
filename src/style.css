@@ -1,3 +1,4 @@
+/* styles.css */
 body,
 html {
   margin: 0;
@@ -17,12 +18,12 @@ html {
 .slider {
   display: flex;
   flex-direction: column;
-  height: 400%; /* Adjust this to match the number of slides */
+  height: 200%; /* Adjust this based on the number of slides */
   transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-  height: 100vh;
+  height: 25vh; /* Show four slides at once */
   display: flex;
   justify-content: center;
   align-items: center;

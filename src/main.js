@@ -1,10 +1,14 @@
+// script.js
+
 let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
+const slidesToShow = 4; // Number of slides to show at once
+const totalSlides = document.querySelectorAll(".slide").length;
+const maxSlideIndex = totalSlides - slidesToShow;
 const slider = document.querySelector(".slider");
 
 function moveToSlide(index) {
-  if (index >= 0 && index < slides.length) {
-    slider.style.transform = `translateY(-${index * 100}vh)`;
+  if (index >= 0 && index <= maxSlideIndex) {
+    slider.style.transform = `translateY(-${index * (100 / slidesToShow)}vh)`;
     currentSlide = index;
   }
 }
