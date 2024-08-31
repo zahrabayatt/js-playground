@@ -1,12 +1,15 @@
 let currentSlide = 0;
-const slidesToShow = 4; // Number of slides to show at once
+const slideHeight = 98; // Each slide's height
+const slideGap = 16; // Gap between slides
+const slidesToShow = 4; // Number of slides visible at once (based on container height)
 const totalSlides = document.querySelectorAll(".slide").length;
-const maxSlideIndex = totalSlides - slidesToShow;
 const slider = document.querySelector(".slider");
+const maxSlideIndex = totalSlides - slidesToShow;
 
 function moveToSlide(index) {
   if (index >= 0 && index <= maxSlideIndex) {
-    slider.style.transform = `translateY(-${index * (100 / slidesToShow)}vh)`;
+    const translateY = index * (slideHeight + slideGap);
+    slider.style.transform = `translateY(-${translateY}px)`;
     currentSlide = index;
   }
 }
