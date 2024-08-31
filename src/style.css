@@ -1,100 +1,48 @@
-/* General Styles */
-
-* {
+body,
+html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+  overflow: hidden;
+  height: 100%;
+  font-family: Arial, sans-serif;
 }
 
-body {
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  height: 400%; /* Adjust this to match the number of slides */
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
   height: 100vh;
-  background: url(img/project-5.jpg) no-repeat center center/ cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 2rem;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
 }
 
-#add-task-container {
-  width: 350px;
-  padding: 20px 10px;
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: 0 0 3px;
+.nav-buttons {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
   display: flex;
-  margin-bottom: 20px;
+  flex-direction: column;
 }
 
-input {
-  flex: 5;
-  margin-right: 10px;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  padding: 5px;
-}
-
-#add-task {
-  flex: 1;
-  font-size: 1.2rem;
-  padding: 5px;
-  background-color: #fff;
-  color: green;
-  border: green solid 2px;
-  border-radius: 10px;
-}
-
-#add-task:hover {
-  background-color: green;
-  color: #fff;
-}
-
-/* Styling for task witch got added to to-do list */
-
-.task {
-  width: 100%;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 3px;
-  padding: 5px;
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.task li {
-  list-style: none;
-  flex: 4;
-  padding: 5px;
-  font-style: 1.3rem;
-  margin: 10px;
-}
-
-.task button {
-  flex: 1;
-  border-radius: 10px;
-  background-color: #fff;
+.nav-buttons button {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
   cursor: pointer;
-}
-
-.task .checkTask {
-  color: orange;
-  margin-right: 5px;
-  border: solid 2px orange;
-  font-size: 1.5rem;
-}
-.task .checkTask:hover {
-  background-color: orange;
-  color: #fff;
-}
-
-.task .deleteTask {
-  color: red;
-  margin-right: 5px;
-  border: solid 2px red;
-  font-size: 1.3rem;
-}
-
-.task .deleteTask:hover {
-  background-color: red;
-  color: #fff;
 }
