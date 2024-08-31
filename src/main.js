@@ -8,6 +8,9 @@ const slideGap = parseInt(
 ); // Gap between slides
 
 function moveToSlide(index) {
+  if (index > totalSlides - 1 || index < 0) {
+    return;
+  }
   const translateY = index * (slideHeight + slideGap);
   const maxTranslateY = slider.clientHeight - sliderContainer.clientHeight;
 
